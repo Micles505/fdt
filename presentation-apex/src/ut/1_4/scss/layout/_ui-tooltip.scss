@@ -1,0 +1,4 @@
+/* Ahustement pour la largeur du tooltip */ 
+body .ui-tooltip{
+   max-width: inherit !important; /* Par défaut c'était 300px */
+}

@@ -1,0 +1,74 @@
+﻿$gouvernement-qc: #095797; 
+$gouvernement-qc-acc: #396639;
+$blanc-shq-qc: #ffffff;
+$base-hover: #ffa445;
+$base-text: #223654;
+$base-label:#313131;
+$header-height: 0px;
+$base-title: #001e5b;
+$base-border:#dfdfdf;
+$base-qc-fonce:#011331;
+//$base-qc-pale:#ecf3ff;
+$base-qc-pale:#e6eef4;
+$warning-bg-color: #fbce4a;
+$warning-color: #443302;
+$footerBackgroud:#fcfcfd;
+
+$alertBadgeinfoBackground: #0573ce;
+$alertBadgeinfoColor: $blanc-shq-qc;
+$alertBadgeinfoHover: lighten($alertBadgeinfoBackground, 50%);
+$alertBadgeWarningBackground: #fbce4a;
+$alertBadgeWarningColor: #443302;
+$alertBadgeWarningHover: lighten($alertBadgeWarningBackground, 20%);
+$alertUrgentBackground: rgba(223, 123, 134, 0.5);
+$alertBadgeUrgentBackground: #721c25;
+$alertBadgeUrgentColor: #721c25;
+$alertBadgeUrgentHover: lighten($alertBadgeUrgentBackground, 65%);
+$alertUrgentColor: black;
+$alertContexteSelection:#dae6f0;
+$alertCouleurZoneContexte: #ECF2F7;
+
+$header-IRR-bg: #f4f4f4;
+$header-IRR-color: black;
+$header-IRR-border: 1px solid #e6e6e6;
+$header-IRR-shadow: inset 1px 0 0 0 #e6e6e6;
+$header-IRR-bg-hover: #b8cde0;
+$header-IRR-bg-active: #5071a0;
+
+$a-IRR-sort-widget-bg: #5571a0;
+$a-IRR-sort-widget-hover: $base-hover;
+$a-IRR-sort-widget-shadow: #ffa445f2;
+$a-IRR-sort-widget-bg-active: #506a96;
+
+$menu-navigation-hover-active: #405a88;
+// $menu-navigation-nav-open: #344e7a;
+$menu-navagation-color-text:#05345a;
+$menu-navigation-nav-open: #074578;
+$menu-navigation-bg:#074171;
+$menu-navigation-hover: $base-hover;
+
+$shq-lov-item-tag-bg: lighten(#4b6eab, 40%);
+$shq-lov-item-odd: #ecf3ff80;
+$shq-lov-item-hover: $base-hover;
+$shq-lov-item-selected: #405e91;
+$shq-lov-item-selected-hover: $base-hover;
+$shq-lov-item-load-more: #223654b3;
+$shq-lov-item-header: #f4f4f4;
+
+//$shq-tab-pill-active: #5071a0;
+$shq-tab-pill-active:#3A78AB;
+$shq-tab-pill-hover: $base-hover;
+
+$shq-radio-group-pill-active: lighten(#4b6eab, 40%);
+$shq-radio-group-pill-hover: $base-hover;
+
+/* $shq-report-thead: #d5deed; */
+$shq-report-thead:#d4e1ea;
+$shq-FS-currentItem-bg:#1f6eae;
+
+$shq-ig-aggregate-bg :#ecf3ff;
+
+/* Page erreur backgroud */ 
+$shq-page-erreur-bg: #b3e6ee ;
+
+$shq-text-color-pill-button:#00080F;

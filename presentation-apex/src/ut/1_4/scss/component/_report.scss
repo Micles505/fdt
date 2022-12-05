@@ -1,0 +1,294 @@
+/* 
+* Ajustement rapport classiue
+*/
+.t-Report {
+  & .t-Report-wrap {
+    & .t-Report-tableWrap {
+      & .t-Report-report {
+        & thead {
+          background-color: $shq-report-thead;
+          color: black;
+
+          & a {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*
+* Rapport classic ajutement font et hauteur ligne comme le reflow report
+*/
+.shq-Report-reflow-classic .t-Report-cell, .t-Report-colHead{
+  line-height: 2.0rem;
+  font-size: 1.4rem;
+}
+/*
+* 
+* Lien de téléchargement rapport classique
+*
+*/
+.t-Report .t-Report-links a {
+  color:#2e2e2e;
+  background-color: #dfdfdf;
+  padding: .4rem .8rem 0.4rem .8rem;
+  border-radius: .4rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.125) inset;
+  &:hover{
+    background-color: #f9f9f9 !important;  
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;  
+  }
+}
+/*
+*
+ Alternative row color pour les rapports classique
+*
+*/
+.t-Report--altRowsDefault .t-Report-report {
+  & tr:nth-child(odd) .t-Report-cell {
+    background-color: #f1f5f940;
+  }
+}
+
+.t-Report--rowHighlight .t-Report-report tr:hover .t-Report-cell,
+.t-Report--rowHighlight .t-Report-report tr:nth-child(odd):hover .t-Report-cell {
+  background-color: #E6EEF4 !important;
+}
+
+/*
+* Colonne obligatoire rapport classique
+*/
+.shq-report-cell-required::after {
+  content: "\e058";
+  font-family: apex-5-icon-font !important;
+  font-size: inherit;
+  vertical-align: text-top;
+  color: red;
+}
+
+.t-Report-cell ul li {
+  font-size: 1.2rem;
+}
+
+/*
+*
+Ajustement entete des IR
+*
+*/
+.a-IRR-header {
+  background-color: $header-IRR-bg;
+  color: $header-IRR-color;
+  font-weight: 700;
+  border-top: $header-IRR-border;
+  box-shadow: $header-IRR-shadow;
+  /* Pour l'édition de lien -- le crayon */
+}
+
+.a-IRR-header.is-active,
+.a-GV-header.is-active {
+  background-color: $header-IRR-bg-active;
+  color: $blanc-shq-qc;
+
+  &:hover {
+    background-color: $header-IRR-bg-active;
+    color: $blanc-shq-qc;
+  }
+}
+
+.a-IRR-header:hover {
+  background-color: $header-IRR-bg-hover;
+
+  &>.a-IRR-headerLink {
+    color: unset;
+  }
+}
+
+.a-IRR-header--group,
+.a-IRR-header--group:hover,
+.a-IRR-header--pivotColumn:hover,
+.a-IRR-header--pivotRow:hover {
+  background-color: $header-IRR-bg-hover;
+}
+
+/* Ajustement pour le widget des entêtes de colonne */
+
+.a-IRR-sortWidget {
+  background-color: $a-IRR-sort-widget-bg;
+  color: $blanc-shq-qc;
+
+  & .a-IRR-sortWidget-row:hover {
+    background-color: $a-IRR-sort-widget-hover;
+  }
+
+  &>.t-Button:focus:before,
+  .a-Button:focus:before,
+  .t-Button.is-active:focus:before,
+  .a-Button.is-active:focus:before,
+  .a-IRR-sortWidget-search>input:focus,
+  .a-IRR-sortWidget-rows a:focus {
+    box-shadow: 0 0 0 1px $a-IRR-sort-widget-shadow inset !important;
+  }
+}
+
+.a-IRR-button.a-IRR-sortWidget-button {
+  border-radius: 0;
+  width: 100%;
+  padding: 8px 0;
+  display: block;
+  box-shadow: none;
+  outline: none;
+  color: $blanc-shq-qc;
+  transition: 5ms;
+
+  &:hover {
+    background-color: $a-IRR-sort-widget-hover;
+    box-shadow: 0 0 0 1px $a-IRR-sort-widget-shadow inset !important;
+  }
+
+  &.is-active {
+    background-color: $a-IRR-sort-widget-hover;
+    box-shadow: 0 0 0 1px $a-IRR-sort-widget-shadow inset !important;
+  }
+
+  &:active:before {
+    box-shadow: 0 0 0 1px $a-IRR-sort-widget-shadow inset !important;
+  }
+}
+
+/*
+*
+ Alternative row color pour les rapports interactifs
+*
+*/
+.a-IRR-table tr {
+  &:nth-child(odd) td {
+    background-color: #f1f5f940;
+  }
+
+  &:hover td {
+    background-color: #b8cde0;
+  }
+}
+
+/*
+*
+ Permet de centrer l'icône d'edition de lien des IR
+* 
+*/
+.a-IRR-table tr td[headers^="LINK"],
+.a-IRR-table tr th#LINK {
+  text-align: center;
+}
+
+/****************** Interactive grid *********************/
+
+/*
+  Bouton Supprimer sur la grid.
+*/
+.a-IG-header .a-Toolbar-group button.a-Button[data-action="selection-delete"] {
+  background-color: $warning-bg-color !important;
+  color: $warning-color;
+}
+
+.a-Toolbar-group .a-Toolbar-item {
+
+  // Aligner le bouton action avec les autres boutons qui sont top.
+  &[id$="ig_toolbar_actions_button"] {
+    vertical-align: top;
+  }
+}
+
+.a-GV-row.is-hover th.a-GV-header:hover {
+  background-color: $header-IRR-bg-hover;
+}
+
+/*  Mettre les champs pleine largeur dans la IG  */
+.a-GV-columnItem {
+  & .textarea.apex-item-textarea {
+    width: 100%;
+  }
+}
+
+/* Afficher un badge dans une cellule d'une grid interactive */
+
+.shq-t-LinksList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shq-t-LinksList-item {
+  display: inline-flex;
+  position: relative;
+  margin-bottom: -1px;
+  border-top: none;
+  border-bottom: none;
+}
+
+.t-LinksList-badge {
+  display: none;
+  vertical-align: middle;
+}
+
+.shq-t-LinksList--showBadge .shq-t-LinksList-badge {
+  background-color: #0a65af;
+  color: white;
+  position: relative;
+  display: inline-flex;
+  font-size: 12px;
+  padding: 0 8px;
+  border-radius: 4px;
+  min-width: 20px;
+  text-align: center;
+  right: 0;
+  top: 0;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.shq-grid-cell-badge {
+  position: relative;
+  border-top: none;
+  border-bottom: none;
+  background-color: #0a65af;
+  color: white;
+  position: relative;
+  display: inline-flex;
+  font-size: 12px;
+  padding: 0 8px;
+  border-radius: 4px;
+  min-width: 20px;
+  text-align: center;
+  right: 0;
+  top: 0;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+//
+//  Affiche une icone avec un cercle en backgroud 28px par 28px
+//
+.shq-medialist-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  color: inherit;
+}
+
+.shq-ig-rectangle-bg {
+  height: 70%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  color: inherit;
+}
+
+.shq-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

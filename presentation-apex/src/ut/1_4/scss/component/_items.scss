@@ -1,0 +1,178 @@
+/*
+  Radio group pill
+*/
+
+.t-Form-fieldContainer--radioButtonGroup .apex-item-grid {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  }
+
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc input+label,
+.apex-button-group input+label {
+  background-color: #f4f4f4;
+}
+
+.t-Form-fieldContainer--radioButtonGroup .apex-item-radio input:checked+label,
+.apex-button-group input:checked+label {
+  background-color: $shq-radio-group-pill-active;
+  box-shadow: 0 0 0 1px rgba(213, 222, 249, 0.151) inset, 0 2px 2px rgba(213, 222, 249, 0.1) inset;
+  color: $shq-text-color-pill-button;
+}
+
+.t-Form-fieldContainer--radioButtonGroup .apex-item-radio input+label {
+  background: rgb(249, 249, 249);
+}
+
+.t-Form-fieldContainer--radioButtonGroup .apex-item-radio input+label:hover {
+  color: $blanc-shq-qc;
+  background-color: $shq-radio-group-pill-hover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;
+}
+
+/* 
+ Correction responsive auto rich textbox 
+ */
+.stretch-CKE>div.t-Form-inputContainer>div.t-Form-itemWrapper>div {
+  width: 100%;
+}
+
+.stretch-CKE>div.t-Form-inputContainer>div.t-Form-itemWrapper>div>div {
+  width: initial !important;
+}
+
+/* 
+* Correctif pour coller un boutton sur un champ.
+*/
+.shq-border-radius-right-none {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-right: none;
+}
+
+/*
+* label bold size
+*/
+.shq-label-bold-size {
+
+  &.t-Form--large .t-Form-label,
+  &.t-Form-fieldContainer--large .t-Form-label {
+    font-size: 2rem;
+  }
+
+  font-weight: bold;
+}
+
+.shq_apex_disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 1;
+  font-weight: bold;
+  outline: none;
+  background-color: transparent !important;
+}
+
+.t-Form-inputContainer span.display_only.shq-item-display-only {
+  line-height: 2rem;
+}
+
+.t-Form-inputContainer span.display_only {
+  &.shq-apex-item-end {
+    background-color: #f9f9f9;
+    font-weight: normal;
+    opacity: 1;
+    border-color: #dfdfdf;
+    border-left-style: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}
+
+.t-Form-inputContainer {
+
+  & input[type="text"],
+  & input[type="password"] {
+    .shq-apex-item-preend {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+}
+
+.t-Form-fieldContainer--postTextBlock {
+  & .t-Form-inputContainer 
+    input {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+/*
+* Permet d'afficher le border pour les champs display only
+*/
+.t-Form-inputContainer span.display_only.shq_display_only,
+.t-Form-inputContainer span.display_only.shq_display_only:focus {
+  background-color: transparent;
+  border-color: $base-border;
+}
+
+/* 
+ * Radio box 
+ */
+
+.t-Form-inputContainer .radio_group.shq-radio-box-horizontal input+label:after,
+.t-Form-inputContainer .radio_group.shq-radio-box-horizontal input+label:before {
+  top: 4px;
+}
+
+
+/* Correction du checkbox en tant que pill */
+/* Masquer l'icone du checkbox */
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:after,
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:before,
+
+.t-Form--large .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:after,
+.t-Form--large .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:before,
+.t-Form-fieldContainer--large.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:after,
+.t-Form-fieldContainer--large.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:before,
+
+.t-Form--xlarge .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:after,
+.t-Form--xlarge .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:before,
+.t-Form-fieldContainer--xlarge.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:after,
+.t-Form-fieldContainer--xlarge.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label:before {
+  display: none;
+}
+
+
+/* Ajuster le padding */
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label {
+  padding-left: 8px;
+}
+
+.t-Form--large .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label,
+.t-Form-fieldContainer--large.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label {
+  padding-left: 1.2rem;
+}
+
+.t-Form--xlarge .t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label,
+.t-Form-fieldContainer--xlarge.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc.apex-item-checkbox input+label {
+  padding-left: 1.2rem;
+}
+
+
+/* Date picker */
+body .ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+}
+
+.t-Form-fieldContainer.t-Form-fieldContainer--postTextBlock span.display_only+span.t-Form-itemText.t-Form-itemText--post {
+  background: $blanc-shq-qc;
+  box-shadow: none;
+}
+/*
+ * Ajuste le radius à 0 pour les input avec un post text-block
+ */
+.t-Form-fieldContainer--postTextBlock input {
+  border-radius: 0.2rem 0 0 0.2rem;
+}

@@ -1,0 +1,10 @@
+#report_adressBatiment {
+   border-spacing: 0px;
+& tbody tr td {
+padding-left: 0px;   
+&.L {
+      display: none;
+      padding-left: 0px;
+   }
+}
+}

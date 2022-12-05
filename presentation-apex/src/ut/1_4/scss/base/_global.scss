@@ -1,0 +1,400 @@
+.shq-color-text-blanc {
+   color: $blanc-shq-qc;
+}
+
+.shq-cursor-not-allowed>a.apex_disabled {
+   cursor: not-allowed !important;
+}
+
+.shq-cursor-pointer {
+   cursor: default !important;
+}
+
+.shq-hidden {
+   display: none !important;
+}
+
+.shq-separateur-region {
+   border: 0;
+   border-top: 1px solid #eee;
+}
+
+/*
+ * Correction pour le bug de chrome 
+ * le champs disparait 
+ * 94.0.4606.81 (Build officiel) (64 bits) (cohort: Stable)
+ * 
+*/
+.apex-item-select,
+.apex-item-text,
+.apex-item-textarea,
+.apex-item-multi {
+   backface-visibility: hidden;
+}
+
+.shq-text--xlarge {
+   font-size: 1.6rem !important;
+   line-height: 2.4rem;
+}
+
+.shq-text--large {
+   font-size: 1.4rem !important;
+   line-height: 2.0rem;
+}
+
+/* 
+* Fonts
+*/
+@font-face {
+   font-family: "BetterGrade";
+   src: url(/wls/shq/utl/interne/ut/1_4/font/BetterGrade.ttf) format('truetype');
+}
+
+.shq-signature-electronique {
+   font-family: "BetterGrade";
+   font-size: 7rem;
+   padding: 3.8rem;
+   cursor: none;
+}
+
+/*
+* Affiche l'icône not allowed sur un lien non permis
+*/
+.shq-lien-not-allowed {   
+   cursor: not-allowed;
+   a & {
+      cursor: not-allowed;
+   }
+}
+
+/* 
+* Classe pour fixer la hauteur à 100%
+*/ 
+.h100p {
+   height: 100%;
+}
+
+/* 
+* Classe pour fixer une hauteur minimum. 
+* Équivalent dans le thème universel mxhamout dans le layout Modifiers
+*/ 
+
+.mnh10 {
+   min-height: 10px
+}
+
+.mnh20 {
+   min-height: 20px
+}
+
+.mnh30 {
+   min-height: 30px
+}
+
+.mnh40 {
+   min-height: 40px
+}
+
+.mnh50 {
+   min-height: 50px
+}
+
+.mnh60 {
+   min-height: 60px
+}
+
+.mnh70 {
+   min-height: 70px
+}
+
+.mnh80 {
+   min-height: 80px
+}
+
+.mnh90 {
+   min-height: 90px
+}
+
+.mnh100 {
+   min-height: 100px
+}
+
+.mnh110 {
+   min-height: 110px
+}
+
+.mnh120 {
+   min-height: 120px
+}
+
+.mnh130 {
+   min-height: 130px
+}
+
+.mnh140 {
+   min-height: 140px
+}
+
+.mnh150 {
+   min-height: 150px
+}
+
+.mnh160 {
+   min-height: 160px
+}
+
+.mnh170 {
+   min-height: 170px
+}
+
+.mnh180 {
+   min-height: 180px
+}
+
+.mnh190 {
+   min-height: 190px
+}
+
+.mnh200 {
+   min-height: 200px
+}
+
+.mnh210 {
+   min-height: 210px
+}
+
+.mnh220 {
+   min-height: 220px
+}
+
+.mnh230 {
+   min-height: 230px
+}
+
+.mnh240 {
+   min-height: 240px
+}
+
+.mnh250 {
+   min-height: 250px
+}
+
+.mnh260 {
+   min-height: 260px
+}
+
+.mnh270 {
+   min-height: 270px
+}
+
+.mnh280 {
+   min-height: 280px
+}
+
+.mnh290 {
+   min-height: 290px
+}
+
+.mnh300 {
+   min-height: 300px
+}
+
+.mnh310 {
+   min-height: 310px
+}
+
+.mnh320 {
+   min-height: 320px
+}
+
+.mnh330 {
+   min-height: 330px
+}
+
+.mnh340 {
+   min-height: 340px
+}
+
+.mnh350 {
+   min-height: 350px
+}
+
+.mnh360 {
+   min-height: 360px
+}
+
+.mnh370 {
+   min-height: 370px
+}
+
+.mnh380 {
+   min-height: 380px
+}
+
+.mnh390 {
+   min-height: 390px
+}
+
+.mnh400 {
+   min-height: 400px
+}
+
+.mnh410 {
+   min-height: 410px
+}
+
+.mnh420 {
+   min-height: 420px
+}
+
+.mnh430 {
+   min-height: 430px
+}
+
+.mnh440 {
+   min-height: 440px
+}
+
+.mnh450 {
+   min-height: 450px
+}
+
+.mnh460 {
+   min-height: 460px
+}
+
+.mnh470 {
+   min-height: 470px
+}
+
+.mnh480 {
+   min-height: 480px
+}
+
+.mnh490 {
+   min-height: 490px
+}
+
+.mnh500 {
+   min-height: 500px
+}
+
+.mnh510 {
+   min-height: 510px
+}
+
+.mnh520 {
+   min-height: 520px
+}
+
+.mnh530 {
+   min-height: 530px
+}
+
+.mnh540 {
+   min-height: 540px
+}
+
+.mnh550 {
+   min-height: 550px
+}
+
+.mnh560 {
+   min-height: 560px
+}
+
+.mnh570 {
+   min-height: 570px
+}
+
+.mnh580 {
+   min-height: 580px
+}
+
+.mnh590 {
+   min-height: 590px
+}
+
+.mnh600 {
+   min-height: 600px
+}
+
+.mnh610 {
+   min-height: 610px
+}
+
+.mnh620 {
+   min-height: 620px
+}
+
+.mnh630 {
+   min-height: 630px
+}
+
+.mnh640 {
+   min-height: 640px
+}
+
+.mnh650 {
+   min-height: 650px
+}
+
+.mnh660 {
+   min-height: 660px
+}
+
+.mnh670 {
+   min-height: 670px
+}
+
+.mnh680 {
+   min-height: 680px
+}
+
+.mnh690 {
+   min-height: 690px
+}
+
+.mnh700 {
+   min-height: 700px
+}
+
+.mnh710 {
+   min-height: 710px
+}
+
+.mnh720 {
+   min-height: 720px
+}
+
+.mnh730 {
+   min-height: 730px
+}
+
+.mnh740 {
+   min-height: 740px
+}
+
+.mnh750 {
+   min-height: 750px
+}
+
+.mnh760 {
+   min-height: 760px
+}
+
+.mnh770 {
+   min-height: 770px
+}
+
+.mnh780 {
+   min-height: 780px
+}
+
+.mnh790 {
+   min-height: 790px
+}
+
+.mnh800 {
+   min-height: 800px
+}

@@ -1,0 +1,29 @@
+/*
+* Css pour les cards des pieces jointe sur le formulaire de demande
+*/
+.shq-cards-piece-jointe {
+  & .t-Card {
+    & .t-Card-wrap {
+      & .t-Card-titleWrap {
+        background-color: #e3e9f5;
+      }
+    }
+  }
+}
+.t-Form-inputContainer span.display_only {
+  &.gpr-mnt-inactif {
+    background-color: #f9f9f9;
+    border-color: #dfdfdf;
+    cursor: not-allowed;
+    font-weight: 500;
+  }
+}
+
+.t-Form-inputContainer > #P23_LABEL_RAIS_PRET_ADDIT_LABEL {
+  padding-bottom: 0px;
+}
+
+.shq-mandataire {
+  font-size: 1.2rem;
+  font-style: italic;
+}

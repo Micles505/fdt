@@ -1,0 +1,258 @@
+/* IE11 Body min height fix */
+
+/*
+ Ajustement interner explorer et Edge pour le selectlist du nombre de row sur l'interactive GRID
+*/
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .t-Header .t-Header-logo .t-Header-logo-link .apex-logo-text {
+    overflow: hidden;
+    text-overflow: clip;
+    margin-left: 14px;
+  }
+
+  .t-Header .t-Header-logo .t-Header-logo-link .apex-logo-img {
+    max-height: 5rem;
+    height: 5rem;
+    width: 194px;
+    margin-right: 4rem;
+    margin-left: 0rem;
+  }
+
+  .t-Form--floatLeft .t-Form-inputContainer select,
+  .t-Form--labelsAbove .t-Form-fieldContainer .apex-item-select,
+  .t-Form-fieldContainer--stacked .apex-item-select {
+    width: 100%;
+  }
+
+  .t-Form--large .t-Form-inputContainer input[type="text"],
+  .t-Form--large input.datepicker,
+  .t-Form--large input.password,
+  .t-Form--large input.popup_lov,
+  .t-Form--large input.text_field,
+  .t-Form--large select[size="1"].selectlist,
+  .t-Form--large select.yes_no,
+  .t-Form--large span.display_only,
+  .t-Form-fieldContainer--large .t-Form-inputContainer input[type="text"],
+  .t-Form-fieldContainer--large input.datepicker,
+  .t-Form-fieldContainer--large input.password,
+  .t-Form-fieldContainer--large input.popup_lov,
+  .t-Form-fieldContainer--large input.text_field,
+  .t-Form-fieldContainer--large select[size="1"].selectlist,
+  .t-Form-fieldContainer--large select.yes_no,
+  .t-Form-fieldContainer--large span.display_only {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .t-Body-main {
+    display: -ms-flexbox;
+  }
+
+  #t_Header .t-Header-branding .t-Header-titre-application {
+    margin-left: 0px;
+  }
+
+  .t-Body-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .t-Header-titre-application .t-Header-logo-link{
+    padding-left: 0px;
+  }
+
+  
+    /*  
+  .t-Body-content {
+    min-height: calc(100vh - #{$header-height});
+  }  
+
+
+  .a-Toolbar-selectList {
+    padding-right: 0px;
+    background-image: none;
+    background-position: 0%;
+    background-size: 0%;
+  }
+  .a-GV-rowSelector {
+    display: -ms-flexbox;
+  }
+  
+  .t-Header-logo {
+    -ms-flex-preferred-size: 180px;
+  }
+  
+  .t-Header-logo-link {
+    width: 210px;
+  } 
+  .t-Header-titre-application &.t-Header-logo-link {
+    width: 100%;
+  }
+*/
+}
+
+@supports (-ms-ime-align: auto) {
+  .t-Header .t-Header-logo .t-Header-logo-link .apex-logo-text {
+    overflow: hidden;
+    text-overflow: clip;
+    margin-left: 14px;
+  }
+
+  .t-Header .t-Header-logo .t-Header-logo-link .apex-logo-img {
+    max-height: 5rem;
+    height: 5rem;
+    width: 194px;
+    margin-right: 4rem;
+    margin-left: 0rem;
+  }
+
+  .t-Form--floatLeft .t-Form-inputContainer select,
+  .t-Form--labelsAbove .t-Form-fieldContainer .apex-item-select,
+  .t-Form-fieldContainer--stacked .apex-item-select {
+    width: 100%;
+  }
+
+  .t-Form--large .t-Form-inputContainer input[type="text"],
+  .t-Form--large input.datepicker,
+  .t-Form--large input.password,
+  .t-Form--large input.popup_lov,
+  .t-Form--large input.text_field,
+  .t-Form--large select[size="1"].selectlist,
+  .t-Form--large select.yes_no,
+  .t-Form--large span.display_only,
+  .t-Form-fieldContainer--large .t-Form-inputContainer input[type="text"],
+  .t-Form-fieldContainer--large input.datepicker,
+  .t-Form-fieldContainer--large input.password,
+  .t-Form-fieldContainer--large input.popup_lov,
+  .t-Form-fieldContainer--large input.text_field,
+  .t-Form-fieldContainer--large select[size="1"].selectlist,
+  .t-Form-fieldContainer--large select.yes_no,
+  .t-Form-fieldContainer--large span.display_only {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .t-Body-main {
+    display: -ms-flexbox;
+    flex-direction: column;
+  }
+  #t_Header .t-Header-branding .t-Header-titre-application {
+    margin-left: 0px;
+  }
+
+  .t-Header-titre-application .t-Header-logo-link{
+    padding-left: 0px;
+  }
+
+  .t-Body-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  /*
+  .t-Body-content {
+     min-height: calc(100vh - #{$header-height});
+  }  
+
+ 
+  .t-Body-main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .a-Toolbar-selectList {
+    padding-right: 0px;
+    background-image: none;
+    background-position: 0%;
+    background-size: 0%;
+  }
+
+  .a-GV-rowSelector {
+    display: -ms-flexbox;
+  }
+  
+  .t-Header-logo {
+    -ms-flex-preferred-size: 180px;
+  }
+  .t-Header-logo-link {
+    padding-left: none;
+  }
+  #t_Header .t-Header-branding {
+    & .t-Header-titre-application {
+      margin-left: 16px;
+      &.t-Header-logo-link {
+        padding-left: 12px;
+      }
+    }
+  }
+  */
+}
+
+/*
+@supports (-ms-ime-align: auto)  {
+  .t-Form--large .t-Form-inputContainer input[type="text"],
+  .t-Form--large input.datepicker,
+  .t-Form--large input.password,
+  .t-Form--large input.popup_lov,
+  .t-Form--large input.text_field,
+  .t-Form--large select[size="1"].selectlist,
+  .t-Form--large select.yes_no,
+  .t-Form--large span.display_only,
+  .t-Form-fieldContainer--large .t-Form-inputContainer input[type="text"],
+  .t-Form-fieldContainer--large input.datepicker,
+  .t-Form-fieldContainer--large input.password,
+  .t-Form-fieldContainer--large input.popup_lov,
+  .t-Form-fieldContainer--large input.text_field,
+  .t-Form-fieldContainer--large select[size="1"].selectlist,
+  .t-Form-fieldContainer--large select.yes_no,
+  .t-Form-fieldContainer--large span.display_only {
+    padding-top:4px;
+    padding-bottom:4px;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .t-Form--large .t-Form-inputContainer input[type="text"],
+  .t-Form--large input.datepicker,
+  .t-Form--large input.password,
+  .t-Form--large input.popup_lov,
+  .t-Form--large input.text_field,
+  .t-Form--large select[size="1"].selectlist,
+  .t-Form--large select.yes_no,
+  .t-Form--large span.display_only,
+  .t-Form-fieldContainer--large .t-Form-inputContainer input[type="text"],
+  .t-Form-fieldContainer--large input.datepicker,
+  .t-Form-fieldContainer--large input.password,
+  .t-Form-fieldContainer--large input.popup_lov,
+  .t-Form-fieldContainer--large input.text_field,
+  .t-Form-fieldContainer--large select[size="1"].selectlist,
+  .t-Form-fieldContainer--large select.yes_no,
+  .t-Form-fieldContainer--large span.display_only {
+    padding-top:4px;
+    padding-bottom:4px;
+  }
+ }
+
+ */
+
+/* 
+fix pour le CKE editor 
+*/
+.stretch-CKE
+  > div.t-Form-inputContainer
+  > div.t-Form-itemWrapper
+  > div
+  > span.cke_reset.cke_chrome {
+  width: auto !important;
+}
+
+/* 
+ fix popup lov item 
+*/
+
+.pretius--enhancedLovItem.ui-dialog .searchContainer input {
+  height: 2.5em;
+}

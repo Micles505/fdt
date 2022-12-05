@@ -1,0 +1,78 @@
+.container_dqs {
+  body {
+    font-family: Arial, Helvetica, Tahoma;
+    font-size: 10pt;
+  }
+  a img {
+    border: none;
+    margin-right: 5px;
+  }
+  a {
+    color: #3161cf;
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration: none;
+  }
+  a:visited {
+    border: 0px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration: none;
+  }
+  a:link {
+    border: 0px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #4c8dff;
+    font-weight: bold;
+    font-size: 10pt;
+    text-decoration: none;
+  }
+  .encadre_bleu {
+    padding: 5px;
+    border: 1px solid blue;
+    border-radius: 5px;
+  }
+  .medias {
+    color: #3161cf;
+    border: none;
+    text-decoration: none;
+  }
+
+  #msg_jour {
+    font-size: 10pt;
+    color: #ff0000;
+  }
+  #msg_ligne {
+    font-size: 10pt;
+    color: #3161cf;
+  }
+  #msg_warn {
+    font-size: 10pt;
+    font-weight: bold;
+    color: #ff0000;
+    animation: blink 1s steps(2, start) infinite;
+  }
+  #msg_blink {
+    color: #ff0000;
+    font-weight: bold;
+    animation: blinker 2s infinite;
+  }
+  @keyframes blinker {
+    66% {
+      opacity: 0.4;
+    }
+  }
+
+  tr:nth-child(even) {
+    background: #ccc;
+  }
+  tr:nth-child(odd) {
+    background: #fff;
+  }
+}

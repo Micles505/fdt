@@ -1,0 +1,21 @@
+/* Visuel des onglet de tabulation */
+.t-Tabs--pill {
+	.t-Tabs-item.is-active {
+		.t-Tabs-link {
+			background-color: $shq-tab-pill-active;
+			color: $blanc-shq-qc;
+			&:hover {
+				background-color: $shq-tab-pill-hover;
+				color: $blanc-shq-qc;
+				outline-color: none;
+			}
+		}
+	}
+	
+	.t-Tabs-link {
+		&:hover {
+			background-color: $shq-tab-pill-hover;
+			color: $blanc-shq-qc;
+		}
+	}
+}

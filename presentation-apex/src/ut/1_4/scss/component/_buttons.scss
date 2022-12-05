@@ -1,0 +1,49 @@
+.shq-Button-bottom-large {
+  margin-top: 40px;
+}
+
+.shq-Button-bottom-xlarge {
+  margin-top: 48px;
+}
+//
+// bouton Modifier sur la grille interactive
+//
+.a-IG-header .a-Toolbar-groupContainer.a-Toolbar-groupContainer--start .a-Toolbar-group .a-Button.is-active {
+  background-color: #ecf3ff;
+  &:hover {
+    background-color: white;
+  }
+}
+//
+// Accentué l'effet sur le focus d'un bouton hot
+//
+.a-Button--hot:hover,
+.t-Button--hot:not(.t-Button--simple):hover,
+body .ui-state-default.ui-button.ui-button--hot:hover,
+body .ui-state-default.ui-priority-primary:hover,
+.a-Button--hot:not(:active):focus,
+.t-Button--hot:not(.t-Button--simple):not(:active):focus,
+body .ui-state-default.ui-button.ui-button--hot:not(:active):focus,
+body .ui-state-default.ui-priority-primary:not(:active):focus {
+  box-shadow: 1px 0px 2px 2px rgba(30, 110, 175, 0.25);
+}
+//
+// Accentué l'effet sur le focus d'un bouton warning
+//
+.t-Button--warning:not(.t-Button--simple):not(.t-Button--hot):hover, .t-Button--warning:not(.t-Button--simple):not(.t-Button--hot):not(:active):focus {
+  box-shadow: 1px 0px 2px 2px rgba(30, 110, 175, 0.25);
+}
+
+.t-Button--success:not(.t-Button--simple):not(.t-Button--hot):hover,
+.t-Button--success:not(.t-Button--simple):not(.t-Button--hot):not(:active):focus {
+  box-shadow: 1px 0px 2px 2px rgba(30, 110, 175, 0.25);
+}
+.t-Button--danger:not(.t-Button--simple):not(.t-Button--hot):hover,
+.t-Button--danger:not(.t-Button--simple):not(.t-Button--hot):not(:active):focus {
+  box-shadow: 1px 0px 2px 2px rgba(30, 110, 175, 0.25);
+}
+
+.t-Button--primary:not(.t-Button--simple):not(.t-Button--hot):hover,
+.t-Button--primary:not(.t-Button--simple):not(.t-Button--hot):not(:active):focus {
+  box-shadow: 1px 0px 2px 2px rgba(30, 110, 175, 0.25);
+}

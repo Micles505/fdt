@@ -1,0 +1,119 @@
+/*
+  Zone information sur la page du portail
+*/
+#idPortailInformation {
+  .t-LinksList-link {
+    &:hover,
+    &:focus {
+      background-color: $alertBadgeinfoHover;
+      box-shadow: none;
+    }
+  }
+  .t-LinksList--showBadge {
+    .t-LinksList-link:hover .t-LinksList-badge {
+      background-color: $base-hover;
+    }
+    .t-LinksList-badge {
+      background-color: $alertBadgeinfoBackground;
+      color: $alertBadgeinfoColor;
+    }
+  }
+  .t-LinksList--showArrow {
+    .t-LinksList-link:hover:before {
+      color: $base-hover;
+    }
+    & > li:not(.t-shq-portail-message) a::before {
+      display: none;
+    }
+  }
+}
+/*
+  Zone avertissement sur la page du portail
+*/
+#idPortailAvertissement {
+  .t-Alert-title {
+    color: $alertBadgeWarningColor;
+  }
+  .t-LinksList-link {
+    &:hover,
+    &:focus {
+      background-color: $alertBadgeWarningHover;
+      box-shadow: none;
+    }
+  }
+  .t-LinksList--showBadge {
+    .t-LinksList-link:hover .t-LinksList-badge {
+      background-color: $base-hover;
+      color: $blanc-shq-qc;
+    }
+    .t-LinksList-badge {
+      background-color: $alertBadgeWarningBackground;
+      color: $alertBadgeWarningColor;
+    }
+  }
+  .t-LinksList--showArrow {
+    .t-LinksList-link:hover:before {
+      color: $base-hover;
+    }
+    & > li:not(.t-shq-portail-message) a::before {
+      display: none;
+    }
+  }
+}
+/*
+  Zone Urgent sur la page du portail
+*/
+#idPortailUrgent {
+  &.t-Alert--colorBG.t-Alert--danger {
+    background-color: $alertUrgentBackground;
+  }
+  .t-LinksList-label {
+    color: $alertUrgentColor;
+  }
+  .t-Alert-title {
+    color: $alertBadgeUrgentColor;
+    font-weight: 500;
+  }
+  .t-LinksList-link {
+    &:hover,
+    &:focus {
+      background-color: $alertBadgeUrgentHover;
+      box-shadow: none;
+    }
+  }
+  .t-LinksList--showBadge {
+    .t-LinksList-link:hover .t-LinksList-badge {
+      background-color: $base-hover;
+    }
+    .t-LinksList-badge {
+      background-color: $alertBadgeUrgentBackground;
+      color: $alertBadgeinfoColor;
+    }
+  }
+  .t-LinksList--showArrow {
+    .t-LinksList-link:hover:before {
+      color: $base-hover;
+    }
+    & > li:not(.t-shq-portail-message) a::before {
+      display: none;
+    }
+  }
+}
+ #idAccueilPortail {
+  cursor: default;
+  pointer-events: none;
+  .t-LinksList {
+    .t-LinksList-label {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+}
+/*
+  Classe pour appliquer la couleur à une zone utilisée comme contexte.
+*/
+.zoneContexte {
+   &.t-Alert--colorBG {
+     background-color: $alertCouleurZoneContexte;
+   }
+}

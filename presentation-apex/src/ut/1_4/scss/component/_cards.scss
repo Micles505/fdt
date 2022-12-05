@@ -1,0 +1,83 @@
+.t-Cards--basic .t-Card-subtitle {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  max-height: 6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shq-Card-titleWrap {
+  background-color: #e5ecf2;
+  display: block;
+  padding: 12px 80px 12px 16px;
+  height: 80px;
+  overflow: hidden;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+}
+/*
+* Css pour les cards des clients 
+*/
+
+.shq-card-client {
+  $couleurCard: #e3e9f5;
+
+  .t-Card-titleWrap {
+    background-color: $couleurCard !important;
+
+    &:hover {
+      background-color: darken($couleurCard, 20) !important;
+    }
+  }
+
+  .t-Card-body {
+    padding: 0;
+
+    .t-Card-desc,
+    .t-Card-info {
+      padding-right: 48px;
+    }
+    .t-Card-desc {
+      min-height: 60px;
+    }
+    .t-Card-info {
+      min-height: 52px;
+    }
+  }
+  .shq-card-adresse-client,
+  .shq-card-contact-client {
+    padding: 16px;
+    line-height: 40px;
+
+    &:hover {
+      background-color: darken($couleurCard, 10) !important;
+    }
+
+    .t-Card-icon {
+      right: 22px;
+
+      .t-Icon {
+        line-height: 40px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  .shq-card-adresse-client {
+    & .t-Card-icon {
+      top: 106px;
+    }
+  }
+  .shq-card-contact-client {
+    padding-bottom: 2px;
+    padding-top: 2px;
+    & .t-Card-icon {
+      top: 186px;
+    }
+  }
+}

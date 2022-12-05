@@ -1,0 +1,45 @@
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-row.is-current--top,
+.t-TreeNav .a-TreeView-node--topLevel ul,
+.t-TreeNav .a-TreeView-node--topLevel.is-collapsible>.a-TreeView-row {
+  background-color: $menu-navigation-bg;
+}
+
+.t-TreeNav li.a-TreeView-node--topLevel .a-TreeView-row.is-hover {
+  background-color: $base-hover !important
+}
+
+.t-TreeNav .a-TreeView-node--topLevel:hover,
+.t-TreeNav .a-TreeView-node:hover {
+  color: $blanc-shq-qc;
+}
+
+.t-TreeNav .a-TreeView-node .a-TreeView-content.is-current a,
+.t-TreeNav .a-TreeView-node .a-TreeView-content.is-selected a,
+.t-TreeNav .a-TreeView-node.a-TreeView-content.is-current--top a {
+  color: $blanc-shq-qc;
+}
+
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-content.is-hover span a {
+  color: $blanc-shq-qc !important;
+}
+
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-content.is-hover .fa:before,
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-content.is-hover .a-Icon:before {
+  color: $blanc-shq-qc !important;
+}
+
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-content.is-selected .fa {
+  color: $blanc-shq-qc
+}
+
+/*
+.t-TreeNav .a-TreeView-node--topLevel.is-collapsible .a-TreeView-content .a-Icon,
+.t-TreeNav .a-TreeView-node--topLevel.is-collapsible .a-TreeView-content .fa {
+  line-height: 2.4rem;
+}
+*/
+
+/* Ajouter une margin sur les icons des sous-menus */
+.t-TreeNav .a-TreeView-node--topLevel .a-TreeView-node .fa {
+  margin: 0 8px;
+}

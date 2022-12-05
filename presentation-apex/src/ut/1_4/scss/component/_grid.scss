@@ -1,0 +1,114 @@
+/* Ajustement pour le bar de scroll vertical lors du no-padding dans la region standard */
+
+.a-IG-contentContainer {
+   overflow: auto !important;
+   width: auto !important;
+}
+
+/* Pour ajuster le menu shq de la grid */
+
+.a-GV-cell {
+   & .menu-shq-grid {
+      color: $base-qc-fonce;
+
+      &.is-active {
+         background-color: $base-qc-pale;
+      }
+   }
+
+   & .icon-menu-shq-grid {
+      color: $base-qc-fonce;
+   }
+}
+
+/* Ajustement des hauteurs des lignes pour les region Large et X-Large */
+.t-Form--large .a-IG .a-GV-cell {
+   $large-item-height: 3.2rem;
+   $large-item-padding: .7rem;
+
+   // hauteur plus 2x le padding (top et bottom)
+   height: $large-item-height + $large-item-padding + $large-item-padding;
+
+   .a-GV-columnItem {
+      height: 100%;
+
+      input:not([type=radio]):not([type=checkbox]),
+      select[size="1"] {
+         height: $large-item-height;
+      }
+   }
+}
+
+.t-Form--xlarge .a-IG .a-GV-cell {
+   $large-item-height: 4rem;
+   $large-item-padding: .9rem;
+
+   // hauteur plus 2x le padding (top et bottom)
+   height: $large-item-height + $large-item-padding + $large-item-padding;
+
+   .a-GV-columnItem {
+      height: 100%;
+
+      input:not([type=radio]):not([type=checkbox]),
+      select[size="1"] {
+         height: $large-item-height;
+      }
+   }
+}
+
+.a-IG-recordView.a-RV .a-RV-w-scroll .a-RV-body .u-Form-groupHeading button {
+   width: 100%;
+   background-color: #ecf3ff;
+   border-width: thin;
+   border: none;
+   box-shadow: .75px 0px .75px .75px rgba(30, 110, 175, 0.25);
+
+   text-align: left;
+
+   span.a-Icon {
+      float: left;
+   }
+}
+
+//
+// Permet de retirer le coin arrondie pour une grid en detail 
+//
+.shq-detail.t-Region:not(.t-Region--textContent) .t-Region-header {
+   border-radius: 0px;
+}
+
+.shq-detail-Region-header:not(.t-Region--textContent) .t-Region-header {
+   border-radius: 0px;
+}
+
+.shq-detail-Region.t-Region {
+   border-radius: 0px;
+}
+
+.a-IG-body .a-GV-table th.a-GV-controlBreakHeader {
+   background-color: $shq-ig-aggregate-bg !important;
+}
+
+.a-IG-body .is-grandTotal {
+   .a-GV-cell {
+      background-color: #ecf3ff;
+   }
+
+   th span {
+      display: none;
+   }
+}
+
+/* Debug pour les items de la grille */
+/* Permet d'afficher les items masqués */
+/*
+.a-GV-columnItemContainer.u-vh {
+   position: relative;
+   overflow: inherit;
+   clip: inherit;
+   height: inherit;
+   border: 0;
+   margin: inherit;
+   padding: inherit;
+}
+*/

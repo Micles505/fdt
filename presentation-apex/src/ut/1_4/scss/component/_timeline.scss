@@ -1,0 +1,25 @@
+.shq-timeline--Region {
+    background-color: inherit;
+    width: 1px;
+    min-width: 100%;
+
+    & .oj-panel {
+        background-color: inherit;
+        border: none;
+        display: flex;
+        justify-content: flex-end;
+
+        & .oj-label {
+            font-size: 1.4rem;
+            margin-bottom: 0.45em;
+            color: var(--oj-text-color);
+        }
+
+    }
+
+    & .oj-buttonset-multi.oj-button-full-chrome .oj-buttonset-first,
+    .oj-buttonset-multi.oj-button-outlined-chrome .oj-buttonset-first {
+        border-top-left-radius: 4px !important;
+        border-bottom-left-radius: 4px !important;
+    }
+}

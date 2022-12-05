@@ -1,0 +1,24 @@
+
+/* Ajusterment de la hauteur du logo*/
+.t-Header-logo-link img {
+    max-width: 15rem;
+    min-width: 17rem;
+    width: fit-content;
+    height: fit-content;    
+}
+
+/* Marge pour le logo SHQ */
+.t-Header-logo-link img {
+    margin-left: 25px;
+    margin-right: 45px;
+}
+
+/* Enleve la marge de droite sur l'icone espion des développeurs */
+.t-Button--navBar .t-Icon.fa.fa-user-secret {
+    margin-right: 0;
+}
+
+.t-Header-logo-link .apex-logo-text {
+     overflow: visible;
+     font-size: 2.2rem;
+}

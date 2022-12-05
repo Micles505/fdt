@@ -1,0 +1,46 @@
+.app-UTL_RAPPORT_CR {
+
+    & .responsive-iframe {
+        position: relative;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        resize: both;
+    }
+
+
+
+
+    &.page-1000,
+    &.page-1100 {
+
+        .t-Region {
+            height: calc(100vh - 100px );;
+        }
+        & .t-Region-bodyWrap, & .t-Region-body {
+            height: 100%;
+        }
+    }
+
+    &.page-1200 {
+
+        .t-Region {
+            height: calc(100vh - 293px );;
+        }
+        &  .t-Region-bodyWrap, & .t-Region-body {
+            height: 100%;
+        }
+
+    }
+
+    .t-Region-body .container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+
+}

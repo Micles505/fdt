@@ -1,0 +1,13 @@
+/* Correctif pour les pages avec région de gauche 
+ *
+ * à retirer à la migration de 20.1
+ *
+*/
+$larger-menu-navigation: 280px;
+$larger-region-gauche: 280px;
+
+@media only screen and (min-width: 993px) {
+    :not(.u-RTL) .apex-side-nav.js-navCollapsed--hidden.t-PageBody--showLeft.js-navExpanded .t-Body-content {
+        margin-left: $larger-menu-navigation + $larger-region-gauche;
+    }
+}

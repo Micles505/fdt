@@ -1,0 +1,101 @@
+.app-DEM_PUBLIC,
+.app-480000,
+.app-DEM_FORMULAIRE_PHAQ {
+   @media (min-width: 1200px) {
+      .t-Header-branding {
+         padding: 0 calc(1/12 * 100%);
+      }
+
+   }
+}
+
+.app-DEM_AUTORISATION {
+   @media (min-width: 1200px) {
+      .t-Header-branding {
+         padding: 0 calc(1/4 * 100%);
+      }
+
+   }
+}
+
+.app-DEM_PUBLIC,
+.app-DEM_AUTORISATION,
+.app-DEM_FORMULAIRE_PHAQ,
+.app-480000
+ {
+   .t-Header-logo-link img {
+      margin-left: 0;
+   }
+
+   .t-NavigationBar-item a {
+      font-size: 1.6rem;
+   }
+
+   @media (max-width: 768px) {
+      .piv_bas ul li {
+         display: block;
+      }
+   }
+
+   .shq-wizard {
+
+      &>.t-Wizard-body {
+         display: none;
+      }
+
+      & .t-Wizard-header {
+         background-color: #edf7ff;
+      }
+
+      &.shq-wizard-max-content {
+         max-width: max-content;
+      }
+   }
+
+   .shq-hyperlien {
+      color:#095797;
+      text-decoration: underline;
+   }
+   
+   /*
+    * Ajustment du title bar 
+    */
+   .t-BreadcrumbRegion-body .t-BreadcrumbRegion-titleText {
+      font-size: 2rem;
+   }
+
+   .dem-standard-title-text h2 {
+      font-weight: 700;
+   }
+
+   .dem-adresse-texte {
+      padding: 1.2rem 0;
+      line-height: 1.6rem;
+      font-size: 1.6rem;
+   }
+
+   .dem-texte-encadre {
+      display: inline-flex;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+      padding: 4px 8px;
+      border-radius: 2px;
+   }
+
+   .dem-texte-bienvenue {
+      font-weight: 500;
+      color: #001e5b;
+      font-size: 4rem;
+   }
+   /*
+   *
+   * Class css qui permet de mettre une étoile rouge pour les membre du ca obligatoire 
+   *
+   */
+   .shq-ca-is-required::after {
+      content: "\e058";
+      font-family: apex-5-icon-font!important;
+      font-size: inherit;      
+      vertical-align: text-top;
+      color: red;
+    }
+}

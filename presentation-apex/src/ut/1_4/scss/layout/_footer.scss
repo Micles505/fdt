@@ -1,0 +1,16 @@
+
+/* Liens de bas de page */
+.container.piv_bas ul li {	
+	display: inline-block;
+	padding: 5px 15px;
+	line-height: 1.2rem;
+}
+
+.t-Footer{
+	background-color: $footerBackgroud;
+}
+
+/* masquer le numéro de release */
+.t-Footer-apex {
+	display: none;
+}

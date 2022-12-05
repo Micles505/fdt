@@ -1,0 +1,58 @@
+//
+// Base
+//
+@import "base/_variables";
+@import "base/_mixins";
+@import "base/_global";
+//
+// Components
+//
+@import "component/_alert";
+@import "component/_breadcrumb";
+@import "component/_buttons";
+@import "component/_cards";
+@import "component/_tabs";
+@import "component/_items";
+@import "component/_menu_secondaire";
+@import "component/_popup_lov";
+@import "component/_grid";
+@import "component/_region";
+@import "component/_report";
+@import "component/_responsive";
+@import "component/_faceted_search";
+@import "component/_timeline";
+@import "component/_icon";
+//
+// Layouts
+//
+@import "layout/_dialog";
+@import "layout/_footer";
+@import "layout/_header";
+@import "layout/_navigation_action";
+@import "layout/_navigation_menu";
+@import "layout/_navigation_bar";
+@import "layout/_page_login";
+@import "layout/_page_erreur";
+@import "layout/_page_modal";
+@import "layout/_page_standard";
+@import "layout/_standard_page_ie11fix";
+@import "layout/_ui-tooltip";
+//
+// Page 
+//
+@import "page/_dem_p201_consultation_solde";
+@import "page/_gpr_p7_adresse_client";
+@import "page/_gpr_p14_demandeur_client";
+@import "page/_gpr_p23_analyse_client";
+//
+// Application
+//
+@import "application/_shq_public";
+@import "application/_fdt";
+@import "application/utl_rapport_cr";
+//
+// Vendor
+//
+@import "vendor/_shq_lov_item";
+@import "vendor/_dqsjob";
+@import "vendor/_ANinit";

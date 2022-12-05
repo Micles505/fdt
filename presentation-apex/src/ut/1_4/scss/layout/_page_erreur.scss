@@ -1,0 +1,24 @@
+.t-Alert-shq-erreur {
+
+    .t-Alert {
+        margin: 5rem auto auto auto;
+        max-width: 50pc;
+        padding: 20px;
+        background-color: rgba(255, 255, 255 , .7);
+        border-radius: 10px;
+    
+    }
+    
+    .t-Body-content {
+        color: $base-qc-fonce;
+        background: $shq-page-erreur-bg;
+    }
+
+    .img-shq-erreur {
+      background-image: url(/wls/shq/utl/interne/ut/1_4/imagesUt/pageErreurSHQ.webp);   
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position-y:bottom;
+      background-position-x: center;
+    }
+}

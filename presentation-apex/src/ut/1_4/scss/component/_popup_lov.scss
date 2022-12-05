@@ -1,0 +1,36 @@
+.t-Form--xlarge input[type="text"].t-Form-searchField:not(.apex-item-has-icon),
+.t-Form-fieldContainer--xlarge input[type="text"].t-Form-searchField:not(.apex-item-has-icon) {
+   padding-left: 4rem;
+   height: 4rem;
+   border-radius: 4px;
+   vertical-align: bottom;
+}
+
+.shq-PopupLov-Bouton-Recherher,
+.shq-PopupLov-Bouton-Fermer {
+   height: 4rem;
+   width: auto;
+}
+
+.shq-PopupLov-Bouton-Suivant,
+.shq-PopupLov-Bouton-Precedent {
+   height: 3rem;
+   width: 9rem;
+}
+
+.t-PopupLOV-links a:nth-of-type(even) {
+   background: $shq-lov-item-odd;
+
+   &:hover {
+      background-color: #314d78;
+      color: #f8fafc;
+   }
+}
+
+//
+// Pour le popup-lov choix multiple mettre les pastilles de couleur au lieu du gris.
+// 
+.apex-item-group--popup-lov .apex-item-multi-item>span {
+   background-color: #099790;
+   color: white;
+}

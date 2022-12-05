@@ -1,0 +1,21 @@
+.app-FDT_2   {
+
+    &.page-2 {
+        & #tempsSaisiePeriode .a-GV-table tr.is-selected .a-GV-cell {
+            color: black !important;
+        }
+
+        .a-IG-header .a-Toolbar-groupContainer.a-Toolbar-groupContainer--start .a-Toolbar-group .a-Button.is-active-filtre-fdt {
+            background-color: rgb(87, 151, 9);
+            color: white;
+
+            &:hover {
+                color:white;
+                background-color: rgba(87, 151, 9, 0.5);
+            }
+        }
+        & .t-Tabs--pill {
+            background-color: #e9f1f7;
+        }        
+    }
+}
