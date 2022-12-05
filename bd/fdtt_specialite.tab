@@ -1,0 +1,45 @@
+create table FDTT_SPECIALITE
+(
+  no_seq_specialite NUMBER(10) not null,
+  no_seq_direction  NUMBER(10) not null,
+  co_specialite     VARCHAR2(10) not null,
+  description       VARCHAR2(75) not null,
+  co_sta_specialite VARCHAR2(10) default 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+;
+comment on table FDTT_SPECIALITE
+  is 'Définition des spécialité/regroupement';
+comment on column FDTT_SPECIALITE.no_seq_specialite
+  is 'No de séquence de de l''analyse de la demande. Clé primaire.';
+comment on column FDTT_SPECIALITE.no_seq_direction
+  is 'No de séquence de la direction';
+comment on column FDTT_SPECIALITE.co_specialite
+  is 'Code de la spécialité';
+comment on column FDTT_SPECIALITE.description
+  is 'Description';
+comment on column FDTT_SPECIALITE.co_sta_specialite
+  is 'Code statut Actif/Inactif Default = ''A''';
+comment on column FDTT_SPECIALITE.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_SPECIALITE.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_SPECIALITE.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_SPECIALITE.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTSPEC_DIREC_FK_I on FDTT_SPECIALITE (NO_SEQ_DIRECTION);
+alter table FDTT_SPECIALITE
+  add constraint FDTT_SPECIALITE_PK primary key (NO_SEQ_SPECIALITE);
+alter table FDTT_SPECIALITE
+  add constraint FDTT_SPECIALITE_UK unique (NO_SEQ_DIRECTION, CO_SPECIALITE);
+alter table FDTT_SPECIALITE
+  add constraint FDTSPEC_DIREC_FK foreign key (NO_SEQ_DIRECTION)
+  references FDTT_DIRECTION (NO_SEQ_DIRECTION);
+alter table FDTT_SPECIALITE
+  add constraint FDTSPECIALITE_CK1
+  check (CO_STA_SPECIALITE IN ('A','I'));
+

@@ -1,0 +1,35 @@
+create table FDTT_GROUPES
+(
+  no_seq_groupe     NUMBER(8) not null,
+  code_groupe       VARCHAR2(30) not null,
+  nom_groupe        VARCHAR2(60) not null,
+  co_sta_groupe     VARCHAR2(30) default 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+;
+comment on table FDTT_GROUPES
+  is 'Table groupe d''approbateur (Famille)';
+comment on column FDTT_GROUPES.no_seq_groupe
+  is 'No de séquence du groupe. Clé primaire.';
+comment on column FDTT_GROUPES.code_groupe
+  is 'Code du groupe';
+comment on column FDTT_GROUPES.nom_groupe
+  is 'Nom du groupe';
+comment on column FDTT_GROUPES.co_sta_groupe
+  is 'Code de status du groupe.  Actif/Inactif';
+comment on column FDTT_GROUPES.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_GROUPES.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_GROUPES.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_GROUPES.dh_maj_enreg
+  is 'Date heure modificaiton de l''enregistrement.';
+alter table FDTT_GROUPES
+  add constraint FDTGROUPE_PK primary key (NO_SEQ_GROUPE);
+alter table FDTT_GROUPES
+  add constraint FDTT_GROUPE_UK unique (CODE_GROUPE);
+

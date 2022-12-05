@@ -1,0 +1,105 @@
+create table FDTT_RESSOURCE
+(
+  no_seq_ressource     NUMBER(10) not null,
+  co_employe_shq       NUMBER(5),
+  id_employe_sagir     NUMBER(10),
+  id_personne_sagir    NUMBER(10),
+  nom                  VARCHAR2(50),
+  prenom               VARCHAR2(50),
+  nom_firme            VARCHAR2(75),
+  co_interne_exter     VARCHAR2(1) not null,
+  co_centre_resp       VARCHAR2(10),
+  co_typ_centre_resp   VARCHAR2(10),
+  co_categ_emploi      VARCHAR2(10),
+  co_niveau_classe     VARCHAR2(10),
+  ind_saisie_assiduite VARCHAR2(1) default on null 'O' not null,
+  ind_saisie_intrv     VARCHAR2(1) default on null 'N' not null,
+  ind_horaire_var      VARCHAR2(1) default on null 'O' not null,
+  ind_validation_intrv VARCHAR2(1) default on null 'N' not null,
+  nb_hmin_jour_ressr   NUMBER(4) not null,
+  nb_hmin_semn_ressr   NUMBER(4) not null,
+  commentaire          VARCHAR2(1000),
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on table FDTT_RESSOURCE
+  is 'Table qui définit la ressource (Interne/Externe)';
+comment on column FDTT_RESSOURCE.no_seq_ressource
+  is 'No de séquence de la ressource. Clé primaire.';
+comment on column FDTT_RESSOURCE.co_employe_shq
+  is 'No de séquence de l''employé  Interne ou Externe';
+comment on column FDTT_RESSOURCE.id_employe_sagir
+  is 'Id - Employé SAGIR';
+comment on column FDTT_RESSOURCE.id_personne_sagir
+  is 'Id - Personne clé - SAGIR';
+comment on column FDTT_RESSOURCE.nom
+  is 'Nom ';
+comment on column FDTT_RESSOURCE.prenom
+  is 'Prénom';
+comment on column FDTT_RESSOURCE.co_interne_exter
+  is 'Code Interne/Externe/Vacant';
+comment on column FDTT_RESSOURCE.co_centre_resp
+  is 'Centre de responsabilité
+CR - Centre de responsabilité
+UA - Unité administrative';
+comment on column FDTT_RESSOURCE.co_typ_centre_resp
+  is 'Type de centre de responsabilité
+CRTI - Centre de responsabilité TI
+HCRTI - Hors centre de responsabilité TI';
+comment on column FDTT_RESSOURCE.co_categ_emploi
+  is 'Catégorie d''emploi
+Professionnel
+Technicien
+Personnel de bureau
+Personnel d''encadrement';
+comment on column FDTT_RESSOURCE.co_niveau_classe
+  is 'Niveau/Classe
+Classe Nominale (CN)
+Classe Principale (CP)
+Niveau Standard (St)
+Niveau Expert (Exp)';
+comment on column FDTT_RESSOURCE.ind_saisie_assiduite
+  is 'Indicateur d''assiduité (Oui/Non)';
+comment on column FDTT_RESSOURCE.ind_saisie_intrv
+  is 'Indicateur saisie d''intervention (Oui/Non)';
+comment on column FDTT_RESSOURCE.ind_horaire_var
+  is 'Indicateur d''heure variable';
+comment on column FDTT_RESSOURCE.ind_validation_intrv
+  is 'Indicateur de validation intervention';
+comment on column FDTT_RESSOURCE.nb_hmin_jour_ressr
+  is 'Nombre d''heure ressource';
+comment on column FDTT_RESSOURCE.nb_hmin_semn_ressr
+  is 'Nombre d''heure semaine ';
+comment on column FDTT_RESSOURCE.commentaire
+  is 'Commentaires';
+comment on column FDTT_RESSOURCE.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_RESSOURCE.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_RESSOURCE.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_RESSOURCE.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTRESSR_BUSEMP_FK_I on FDTT_RESSOURCE (CO_EMPLOYE_SHQ);
+alter table FDTT_RESSOURCE
+  add constraint FDTT_RESSOURCE_PK primary key (NO_SEQ_RESSOURCE);
+alter table FDTT_RESSOURCE
+  add constraint FDTRESSR_BUSEMP_FK foreign key (CO_EMPLOYE_SHQ)
+  references BUS.BUST_EMPLOYE (CO_EMPLOYE_SHQ);
+alter table FDTT_RESSOURCE
+  add constraint FDTRESSR_CK1
+  check (IND_HORAIRE_VAR IN ('O','N'));
+alter table FDTT_RESSOURCE
+  add constraint FDTRESSR_CK2
+  check (IND_SAISIE_ASSIDUITE IN ('O','N'));
+alter table FDTT_RESSOURCE
+  add constraint FDTRESSR_CK3
+  check (IND_SAISIE_INTRV IN ('O','N'));
+alter table FDTT_RESSOURCE
+  add constraint FDTRESSR_CK4
+  check (CO_EMPLOYE_SHQ IS NULL AND CO_INTERNE_EXTER IN ('E','V') OR
+         CO_EMPLOYE_SHQ IS NOT NULL AND CO_INTERNE_EXTER IN ('I','E'));
+

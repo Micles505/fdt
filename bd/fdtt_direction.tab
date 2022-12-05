@@ -1,0 +1,38 @@
+create table FDTT_DIRECTION
+(
+  no_seq_direction  NUMBER(10) not null,
+  co_direction      VARCHAR2(10) not null,
+  description       VARCHAR2(200) not null,
+  co_sta_direction  VARCHAR2(10) default 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+;
+comment on table FDTT_DIRECTION
+  is 'Cette table définit la famille (Direction).';
+comment on column FDTT_DIRECTION.no_seq_direction
+  is 'No de séquence de la famille. Clé primaire.';
+comment on column FDTT_DIRECTION.co_direction
+  is 'Code de la Direction';
+comment on column FDTT_DIRECTION.description
+  is 'Description';
+comment on column FDTT_DIRECTION.co_sta_direction
+  is 'Code de statut Actif/Inactif';
+comment on column FDTT_DIRECTION.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_DIRECTION.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_DIRECTION.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_DIRECTION.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table FDTT_DIRECTION
+  add constraint FDTT_DIRECTION_PK primary key (NO_SEQ_DIRECTION);
+alter table FDTT_DIRECTION
+  add constraint FDTT_DIRECTION_UK unique (CO_DIRECTION);
+alter table FDTT_DIRECTION
+  add constraint FDTT_DIRECTION_CK1
+  check ("CO_STA_DIRECTION"='A' OR "CO_STA_DIRECTION"='I');
+

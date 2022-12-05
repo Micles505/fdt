@@ -1,0 +1,43 @@
+create table FDTT_TYP_LIVRAISON
+(
+  no_seq_typ_livraison NUMBER(10) not null,
+  no_seq_direction     NUMBER(10) not null,
+  co_typ_livraison     VARCHAR2(10) not null,
+  description          VARCHAR2(200) not null,
+  co_sta_typ_livraison VARCHAR2(1) default on null 'A' not null,
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on column FDTT_TYP_LIVRAISON.no_seq_typ_livraison
+  is 'Numéro de séquence du type de livraison .C''''est numéro unique assigné à la création du type de livraison';
+comment on column FDTT_TYP_LIVRAISON.no_seq_direction
+  is 'No de séquence de la direction';
+comment on column FDTT_TYP_LIVRAISON.co_typ_livraison
+  is 'Code du type de livraison ';
+comment on column FDTT_TYP_LIVRAISON.description
+  is 'Description';
+comment on column FDTT_TYP_LIVRAISON.co_sta_typ_livraison
+  is 'Code de statut  Actif/Inactif ';
+comment on column FDTT_TYP_LIVRAISON.co_user_cre_enreg
+  is 'Code utilisateur de l''''usager qui a créé l''''enregistrement.';
+comment on column FDTT_TYP_LIVRAISON.co_user_maj_enreg
+  is 'Code utilisateur de l''''usager qui a modifé l''''enregistrement.';
+comment on column FDTT_TYP_LIVRAISON.dh_cre_enreg
+  is 'Date heure création de l''''enregistrement.';
+comment on column FDTT_TYP_LIVRAISON.dh_maj_enreg
+  is 'Date heure modification de l''''enregistrement.';
+create index FDTTLIV_DIREC_FK_I on FDTT_TYP_LIVRAISON (NO_SEQ_DIRECTION);
+alter table FDTT_TYP_LIVRAISON
+  add constraint FDTT_TYP_LIVRAISON_PK primary key (NO_SEQ_TYP_LIVRAISON);
+alter table FDTT_TYP_LIVRAISON
+  add constraint FDTT_TYP_LIVRAISON_UK unique (NO_SEQ_DIRECTION, CO_TYP_LIVRAISON);
+alter table FDTT_TYP_LIVRAISON
+  add constraint FDTTLIV_DIREC_FK foreign key (NO_SEQ_DIRECTION)
+  references FDTT_DIRECTION (NO_SEQ_DIRECTION);
+alter table FDTT_TYP_LIVRAISON
+  add constraint FDTT_TYP_LIVRAISON_CK1
+  check (CO_STA_TYP_LIVRAISON IN ('A','I'));
+

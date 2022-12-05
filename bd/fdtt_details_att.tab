@@ -1,0 +1,51 @@
+create table FDTT_DETAILS_ATT
+(
+  no_seq_detail_attrav NUMBER(10) not null,
+  no_seq_ressource     NUMBER(10),
+  dt_debut_att         DATE not null,
+  dt_fin_att           DATE,
+  nb_hmin_jour         NUMBER(4) not null,
+  nb_hmin_sem          NUMBER(4) not null,
+  nb_jour_sem          NUMBER(3,2) not null,
+  note                 VARCHAR2(400),
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on table FDTT_DETAILS_ATT
+  is 'Table détail de l''aménagement temps travail';
+comment on column FDTT_DETAILS_ATT.no_seq_detail_attrav
+  is 'No de séquence de de l''analyse de la demande. Clé primaire.';
+comment on column FDTT_DETAILS_ATT.no_seq_ressource
+  is 'No séquence de la ressource';
+comment on column FDTT_DETAILS_ATT.dt_debut_att
+  is 'Date début aménagement temps travail';
+comment on column FDTT_DETAILS_ATT.dt_fin_att
+  is 'Date de fin d''aménagement temps travail';
+comment on column FDTT_DETAILS_ATT.nb_hmin_jour
+  is 'Nombre d''heure jour';
+comment on column FDTT_DETAILS_ATT.nb_hmin_sem
+  is 'Nombre d''heure semaine';
+comment on column FDTT_DETAILS_ATT.nb_jour_sem
+  is 'Nombre de jour semaine';
+comment on column FDTT_DETAILS_ATT.note
+  is 'Commentaires';
+comment on column FDTT_DETAILS_ATT.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_DETAILS_ATT.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_DETAILS_ATT.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_DETAILS_ATT.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTDETATT_RESSR_FK_I on FDTT_DETAILS_ATT (NO_SEQ_RESSOURCE);
+alter table FDTT_DETAILS_ATT
+  add constraint FDTDET_ATTRAV_PK primary key (NO_SEQ_DETAIL_ATTRAV);
+alter table FDTT_DETAILS_ATT
+  add constraint FDTT_DETATT_UK unique (NO_SEQ_RESSOURCE, DT_DEBUT_ATT);
+alter table FDTT_DETAILS_ATT
+  add constraint FDTDETATT_RESSR_FK foreign key (NO_SEQ_RESSOURCE)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+

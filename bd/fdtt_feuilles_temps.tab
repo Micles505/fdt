@@ -1,0 +1,72 @@
+create table FDTT_FEUILLES_TEMPS
+(
+  no_seq_feuil_temps    NUMBER(10) not null,
+  no_seq_ressource      NUMBER(10),
+  an_mois_fdt           VARCHAR2(6) not null,
+  solde_reporte         NUMBER(4) not null,
+  heure_reglr           NUMBER(5) not null,
+  credt_utls            NUMBER(4) not null,
+  heure_autre_absence   NUMBER(5),
+  ecart                 NUMBER(4) not null,
+  norme                 NUMBER(5) not null,
+  solde_periode         NUMBER(4) not null,
+  corr_mois_preced      NUMBER(4),
+  ind_saisie_autorisee  VARCHAR2(1) not null,
+  note_corr_mois_preced VARCHAR2(400),
+  nb_min_coupure        NUMBER(5),
+  co_coupure_traitee    VARCHAR2(1),
+  co_user_cre_enreg     VARCHAR2(30) not null,
+  co_user_maj_enreg     VARCHAR2(30),
+  dh_cre_enreg          TIMESTAMP(6) not null,
+  dh_maj_enreg          TIMESTAMP(6)
+)
+;
+comment on table FDTT_FEUILLES_TEMPS
+  is 'Feuille de temps,  Sommaire de la table temps jour pour appobation';
+comment on column FDTT_FEUILLES_TEMPS.no_seq_feuil_temps
+  is 'No de séquence feuille de temps . Clé primaire.';
+comment on column FDTT_FEUILLES_TEMPS.no_seq_ressource
+  is 'No séquence ressource';
+comment on column FDTT_FEUILLES_TEMPS.an_mois_fdt
+  is 'Période - année mois';
+comment on column FDTT_FEUILLES_TEMPS.solde_reporte
+  is 'Solde reporté';
+comment on column FDTT_FEUILLES_TEMPS.heure_reglr
+  is 'Heure régulière';
+comment on column FDTT_FEUILLES_TEMPS.credt_utls
+  is 'Crédit utilisé';
+comment on column FDTT_FEUILLES_TEMPS.heure_autre_absence
+  is 'Heure autre absence';
+comment on column FDTT_FEUILLES_TEMPS.ecart
+  is 'Écart';
+comment on column FDTT_FEUILLES_TEMPS.norme
+  is 'Norme';
+comment on column FDTT_FEUILLES_TEMPS.solde_periode
+  is 'Solde de la période';
+comment on column FDTT_FEUILLES_TEMPS.corr_mois_preced
+  is 'Correction mois précèdent';
+comment on column FDTT_FEUILLES_TEMPS.ind_saisie_autorisee
+  is 'Indicateur saisie autorisée';
+comment on column FDTT_FEUILLES_TEMPS.note_corr_mois_preced
+  is 'Note sur la correction apportée sur le temps du mois précédent';
+comment on column FDTT_FEUILLES_TEMPS.nb_min_coupure
+  is 'Nombre de minute dépassement le maximum permis';
+comment on column FDTT_FEUILLES_TEMPS.co_coupure_traitee
+  is 'Code qui permet de savoir si une coupure a été traitée ou pas par la DRH.';
+comment on column FDTT_FEUILLES_TEMPS.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_FEUILLES_TEMPS.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_FEUILLES_TEMPS.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_FEUILLES_TEMPS.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTFEUTEM_RESSR_FK_I on FDTT_FEUILLES_TEMPS (NO_SEQ_RESSOURCE);
+alter table FDTT_FEUILLES_TEMPS
+  add constraint FDTFEUILLE_TEMPS_PK primary key (NO_SEQ_FEUIL_TEMPS);
+alter table FDTT_FEUILLES_TEMPS
+  add constraint FDTT_FEUTEM_UK unique (NO_SEQ_RESSOURCE, AN_MOIS_FDT);
+alter table FDTT_FEUILLES_TEMPS
+  add constraint FDTFEUTEM_RESSR_FK foreign key (NO_SEQ_RESSOURCE)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+

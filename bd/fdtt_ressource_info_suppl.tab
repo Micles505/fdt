@@ -1,0 +1,78 @@
+create table FDTT_RESSOURCE_INFO_SUPPL
+(
+  no_seq_ressr_info_suppl     NUMBER(10) not null,
+  no_seq_ressource            NUMBER(10) not null,
+  co_unite_organ              VARCHAR2(7) not null,
+  no_seq_specialite           NUMBER(10),
+  dt_debut                    DATE not null,
+  dt_fin                      DATE,
+  nb_hmin_jour                NUMBER(4),
+  ind_horaire_variable        VARCHAR2(1),
+  nb_hmin_semn                NUMBER(4),
+  jour_personne               NUMBER(4),
+  sal_annuel                  NUMBER(8,2),
+  sal_global                  NUMBER(8,2),
+  taux_journalier             NUMBER(6,2),
+  taux_utilise_cout_captl     NUMBER(6,2),
+  bon_commande                VARCHAR2(50),
+  co_typ_classification_heure VARCHAR2(10),
+  co_sta_usager_ext           VARCHAR2(10) default 'I' not null,
+  co_user_cre_enreg           VARCHAR2(30) not null,
+  co_user_maj_enreg           VARCHAR2(30),
+  dh_cre_enreg                TIMESTAMP(6) not null,
+  dh_maj_enreg                TIMESTAMP(6)
+)
+;
+comment on table FDTT_RESSOURCE_INFO_SUPPL
+  is 'Table qui désigne l''information supplémentaire de la ressource';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.no_seq_ressr_info_suppl
+  is 'No de séquence de l''info supplémentaire ressource. Clé primaire.';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.no_seq_ressource
+  is 'No  de séquence usager';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.co_unite_organ
+  is 'Unité administrative';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.dt_debut
+  is 'Date de début ';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.dt_fin
+  is 'Date de fin';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.nb_hmin_jour
+  is 'Nombre d''heure usager  ???? 420';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.ind_horaire_variable
+  is 'Indicateur horaire variable Oui/Non - Defaut = ''O''';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.nb_hmin_semn
+  is 'Nombre d''heure semaine ???? 2100';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.jour_personne
+  is 'Nombre jour/personne allouer à la ressource';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.sal_annuel
+  is 'Salaire applicable';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.sal_global
+  is 'Salaire global applicable';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.taux_journalier
+  is 'Taux journalier';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.taux_utilise_cout_captl
+  is 'Taux utilisé pour les coûts capitalisables.
+';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.bon_commande
+  is 'Bon de commande';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.co_sta_usager_ext
+  is 'Statut usager externe Actif/Inactif';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_RESSOURCE_INFO_SUPPL.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTRESSRISUP_SPEC_FK_I on FDTT_RESSOURCE_INFO_SUPPL (NO_SEQ_SPECIALITE);
+create index FDTRESSRISUP_UNORG_FK_I on FDTT_RESSOURCE_INFO_SUPPL (CO_UNITE_ORGAN);
+create index FDTRESSR_RESSR_FK_I on FDTT_RESSOURCE_INFO_SUPPL (NO_SEQ_RESSOURCE);
+alter table FDTT_RESSOURCE_INFO_SUPPL
+  add constraint FDTT_RESSOURCE_INFO_SUPPL_PK primary key (NO_SEQ_RESSR_INFO_SUPPL);
+alter table FDTT_RESSOURCE_INFO_SUPPL
+  add constraint FDTRESSRISUP_SPEC_FK foreign key (NO_SEQ_SPECIALITE)
+  references FDTT_SPECIALITE (NO_SEQ_SPECIALITE);
+alter table FDTT_RESSOURCE_INFO_SUPPL
+  add constraint FDTRESSR_RESSR_FK foreign key (NO_SEQ_RESSOURCE)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+

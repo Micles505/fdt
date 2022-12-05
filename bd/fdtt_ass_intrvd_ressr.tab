@@ -1,0 +1,42 @@
+create table FDTT_ASS_INTRVD_RESSR
+(
+  no_seq_ass_intrvd_ressr NUMBER(10) not null,
+  no_seq_intrv_detail     NUMBER(10) not null,
+  no_seq_ressource        NUMBER(10) not null,
+  dt_debut                DATE not null,
+  dt_fin                  DATE,
+  co_user_cre_enreg       VARCHAR2(30) not null,
+  co_user_maj_enreg       VARCHAR2(30),
+  dh_cre_enreg            TIMESTAMP(6) not null,
+  dh_maj_enreg            TIMESTAMP(6)
+)
+;
+comment on table FDTT_ASS_INTRVD_RESSR
+  is 'Associer l''intervention à la ressource.';
+comment on column FDTT_ASS_INTRVD_RESSR.no_seq_ass_intrvd_ressr
+  is 'No de séquence usager - activité. Clé primaire.';
+comment on column FDTT_ASS_INTRVD_RESSR.dt_debut
+  is 'Date début de l''intervention ';
+comment on column FDTT_ASS_INTRVD_RESSR.dt_fin
+  is 'Date fin de l''intervention';
+comment on column FDTT_ASS_INTRVD_RESSR.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_ASS_INTRVD_RESSR.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_ASS_INTRVD_RESSR.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_ASS_INTRVD_RESSR.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTAINTRVDR_INTRVD_FK_I on FDTT_ASS_INTRVD_RESSR (NO_SEQ_INTRV_DETAIL);
+create index FDTAINTRVDR_RESSR_FK_I on FDTT_ASS_INTRVD_RESSR (NO_SEQ_RESSOURCE);
+alter table FDTT_ASS_INTRVD_RESSR
+  add constraint FDTT_ASS_INTRVD_RESSR_PK primary key (NO_SEQ_ASS_INTRVD_RESSR);
+alter table FDTT_ASS_INTRVD_RESSR
+  add constraint FDTT_AINTRVDR_INTRVD_UK unique (NO_SEQ_INTRV_DETAIL, NO_SEQ_RESSOURCE);
+alter table FDTT_ASS_INTRVD_RESSR
+  add constraint FDTAINTRVDR_INTRVD_FK foreign key (NO_SEQ_INTRV_DETAIL)
+  references FDTT_INTERVENTION_DETAIL (NO_SEQ_INTRV_DETAIL);
+alter table FDTT_ASS_INTRVD_RESSR
+  add constraint FDTAINTRVDR_RESSR_FK foreign key (NO_SEQ_RESSOURCE)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+

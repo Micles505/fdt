@@ -1,0 +1,128 @@
+create table FDTT_INTERVENTION_DETAIL
+(
+  no_seq_intrv_detail        NUMBER(10) not null,
+  no_seq_interv              NUMBER(10) not null,
+  co_systeme                 VARCHAR2(6),
+  co_unite_organ             VARCHAR2(7),
+  no_seq_categorie_cout      NUMBER(10),
+  no_seq_ass_typ_intrv_qualf NUMBER(10),
+  no_seq_ass_typ_serv_qualf  NUMBER(10),
+  no_seq_typ_strategie       NUMBER(10),
+  no_seq_typ_compte_budg     NUMBER(10),
+  no_seq_typ_etape           NUMBER(10),
+  no_seq_typ_livraison       NUMBER(10),
+  no_seq_ressource_respo     NUMBER(10),
+  code_intrv                 VARCHAR2(30),
+  code_projet                VARCHAR2(30),
+  description                VARCHAR2(75) not null,
+  co_sta_interv_detl         VARCHAR2(10) default on null 'A' not null,
+  dt_deb_reelle              DATE not null,
+  dt_fin_reelle              DATE,
+  dt_deb_planifie            DATE,
+  dt_deb_autorise            DATE,
+  dt_fin_autorise            DATE,
+  budget_autorise            FLOAT,
+  cout_estime                FLOAT,
+  indic_visibilite_fdt       VARCHAR2(1) default 'O' not null,
+  co_user_cre_enreg          VARCHAR2(30),
+  co_user_maj_enreg          VARCHAR2(30),
+  dh_cre_enreg               TIMESTAMP(6),
+  dh_maj_enreg               TIMESTAMP(6),
+  dt_fin_estime              DATE,
+  indic_capitalisable        VARCHAR2(1) default 'N' not null
+)
+;
+comment on table FDTT_INTERVENTION_DETAIL
+  is 'Découpage des activitiés  à l''intervention';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_intrv_detail
+  is 'No de séquence de l''évenement. Clé primaire.';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_interv
+  is 'No séquence plan d''intervention';
+comment on column FDTT_INTERVENTION_DETAIL.co_systeme
+  is 'Code de système';
+comment on column FDTT_INTERVENTION_DETAIL.co_unite_organ
+  is 'Unité administrative - Unité organisationnelle';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_categorie_cout
+  is 'No de séquence de la catégorie coût.';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_ass_typ_intrv_qualf
+  is 'No séquence plan d''association d''intervention';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_ass_typ_serv_qualf
+  is 'No séquence plan d''association de service';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_typ_etape
+  is 'No de séquence du type d''étape.';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_typ_livraison
+  is 'No de séquence du type de livraison';
+comment on column FDTT_INTERVENTION_DETAIL.no_seq_ressource_respo
+  is 'No de séquence du type d''étape.';
+comment on column FDTT_INTERVENTION_DETAIL.code_intrv
+  is 'Code d''intervention, Si l''intervention n''est du type application (BUS_SYSTEME)';
+comment on column FDTT_INTERVENTION_DETAIL.code_projet
+  is 'Code de projet';
+comment on column FDTT_INTERVENTION_DETAIL.description
+  is 'Description du détail d''intervention';
+comment on column FDTT_INTERVENTION_DETAIL.co_sta_interv_detl
+  is 'Code de Statut Actif - Inactif';
+comment on column FDTT_INTERVENTION_DETAIL.dt_deb_reelle
+  is 'Date de début de l''activité butoire';
+comment on column FDTT_INTERVENTION_DETAIL.dt_fin_reelle
+  is 'Date de fin de l''activité butoire';
+comment on column FDTT_INTERVENTION_DETAIL.dt_deb_planifie
+  is 'Date de l''autorisation';
+comment on column FDTT_INTERVENTION_DETAIL.dt_deb_autorise
+  is 'Date début autorisée';
+comment on column FDTT_INTERVENTION_DETAIL.dt_fin_autorise
+  is 'Date fin autorisée';
+comment on column FDTT_INTERVENTION_DETAIL.budget_autorise
+  is 'Montant du budget autorisé';
+comment on column FDTT_INTERVENTION_DETAIL.cout_estime
+  is 'Montant du coût estimé';
+comment on column FDTT_INTERVENTION_DETAIL.indic_visibilite_fdt
+  is 'Indicateur de visibilité restreint (O/N) defaut = O';
+comment on column FDTT_INTERVENTION_DETAIL.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_INTERVENTION_DETAIL.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_INTERVENTION_DETAIL.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_INTERVENTION_DETAIL.dh_maj_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_INTERVENTION_DETAIL.dt_fin_estime
+  is 'Date de fin estimée ';
+comment on column FDTT_INTERVENTION_DETAIL.indic_capitalisable
+  is 'Indicateur capitalisable.';
+create index FDTINTRVD_BUSSYS_FK_I on FDTT_INTERVENTION_DETAIL (CO_SYSTEME);
+create index FDTINTRVD_CATCOUT_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_CATEGORIE_COUT);
+create index FDTINTRVD_INTRV_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_INTERV);
+create index FDTINTRVD_RESS_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_RESSOURCE_RESPO);
+create index FDTINTRVD_TCBUDG_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_TYP_COMPTE_BUDG);
+create index FDTINTRVD_TETAPE_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_TYP_ETAPE);
+create index FDTINTRVD_TLIV_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_TYP_LIVRAISON);
+create index FDTINTRVD_TSTRAG_FK_I on FDTT_INTERVENTION_DETAIL (NO_SEQ_TYP_STRATEGIE);
+create index FDTINTRVD_UORGAN_FK_I on FDTT_INTERVENTION_DETAIL (CO_UNITE_ORGAN);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTT_INTERVENTION_DETAIL_PK primary key (NO_SEQ_INTRV_DETAIL);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_CATCOUT_FK foreign key (NO_SEQ_CATEGORIE_COUT)
+  references FDTT_CATEGORIE_COUT (NO_SEQ_CATEGORIE_COUT);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_FK foreign key (NO_SEQ_INTERV)
+  references FDTT_INTERVENTION (NO_SEQ_INTERV);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_RESS_FK foreign key (NO_SEQ_RESSOURCE_RESPO)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_TCBUDG_FK foreign key (NO_SEQ_TYP_COMPTE_BUDG)
+  references FDTT_TYP_COMPTE_BUDG (NO_SEQ_TYP_COMPTE_BUDG);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_TETAPE_FK foreign key (NO_SEQ_TYP_ETAPE)
+  references FDTT_TYP_ETAPE (NO_SEQ_TYP_ETAPE);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_TLIV_FK foreign key (NO_SEQ_TYP_LIVRAISON)
+  references FDTT_TYP_LIVRAISON (NO_SEQ_TYP_LIVRAISON);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_TSTRAG_FK foreign key (NO_SEQ_TYP_STRATEGIE)
+  references FDTT_TYP_STRATEGIE (NO_SEQ_TYP_STRATEGIE);
+alter table FDTT_INTERVENTION_DETAIL
+  add constraint FDTINTRVD_CK1
+  check ((CO_SYSTEME IS NULL AND CODE_INTRV IS NOT NULL) OR (CO_SYSTEME IS NOT NULL AND CODE_INTRV IS NULL));
+

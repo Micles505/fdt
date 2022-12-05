@@ -1,0 +1,47 @@
+create table FDTT_TYP_ETAPE
+(
+  no_seq_typ_etape  NUMBER(10) not null,
+  no_seq_direction  NUMBER(10) not null,
+  co_typ_etape      VARCHAR2(10) not null,
+  description       VARCHAR2(200) not null,
+  co_sta_typ_etape  VARCHAR2(1) default on null 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+;
+comment on column FDTT_TYP_ETAPE.no_seq_typ_etape
+  is 'Numéro de séquence du type d''attribut .C''''est numéro unique assigné à la création du type d''étape';
+comment on column FDTT_TYP_ETAPE.no_seq_direction
+  is 'No de séquence de la direction';
+comment on column FDTT_TYP_ETAPE.co_typ_etape
+  is 'Code du type d''étape 
+Avant projet
+Planification
+Exécution
+';
+comment on column FDTT_TYP_ETAPE.description
+  is 'Description';
+comment on column FDTT_TYP_ETAPE.co_sta_typ_etape
+  is 'Code de statut  Actif/Inactif ';
+comment on column FDTT_TYP_ETAPE.co_user_cre_enreg
+  is 'Code utilisateur de l''''usager qui a créé l''''enregistrement.';
+comment on column FDTT_TYP_ETAPE.co_user_maj_enreg
+  is 'Code utilisateur de l''''usager qui a modifé l''''enregistrement.';
+comment on column FDTT_TYP_ETAPE.dh_cre_enreg
+  is 'Date heure création de l''''enregistrement.';
+comment on column FDTT_TYP_ETAPE.dh_maj_enreg
+  is 'Date heure modification de l''''enregistrement.';
+create index FDTTETA_DIREC_FK_I on FDTT_TYP_ETAPE (NO_SEQ_DIRECTION);
+alter table FDTT_TYP_ETAPE
+  add constraint FDTT_TYP_ETAPE_PK primary key (NO_SEQ_TYP_ETAPE);
+alter table FDTT_TYP_ETAPE
+  add constraint FDTT_TYP_ETAPE_UK unique (NO_SEQ_DIRECTION, CO_TYP_ETAPE);
+alter table FDTT_TYP_ETAPE
+  add constraint FDTTETAP_DIREC_FK foreign key (NO_SEQ_DIRECTION)
+  references FDTT_DIRECTION (NO_SEQ_DIRECTION);
+alter table FDTT_TYP_ETAPE
+  add constraint FDTT_TYP_ETAPE_CK1
+  check (CO_STA_TYP_ETAPE IN ('A','I'));
+

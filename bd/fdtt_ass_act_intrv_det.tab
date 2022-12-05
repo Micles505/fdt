@@ -1,0 +1,43 @@
+create table FDTT_ASS_ACT_INTRV_DET
+(
+  no_seq_aact_intrv_det     NUMBER(10) not null,
+  no_seq_intrv_detail       NUMBER(10) not null,
+  no_seq_activite_decoupage NUMBER(10),
+  description               VARCHAR2(200),
+  co_user_cre_enreg         VARCHAR2(30) not null,
+  co_user_maj_enreg         VARCHAR2(30),
+  dh_cre_enreg              TIMESTAMP(6) not null,
+  dh_maj_enreg              TIMESTAMP(6)
+)
+;
+comment on table FDTT_ASS_ACT_INTRV_DET
+  is 'Associer les activtités aux interventions';
+comment on column FDTT_ASS_ACT_INTRV_DET.no_seq_aact_intrv_det
+  is 'No de séquence de l''association activité et l''interv. détail. Clé primaire.';
+comment on column FDTT_ASS_ACT_INTRV_DET.no_seq_intrv_detail
+  is 'No de séquence de l''intervention détail';
+comment on column FDTT_ASS_ACT_INTRV_DET.no_seq_activite_decoupage
+  is 'No de séquence de l''activité niveau travail';
+comment on column FDTT_ASS_ACT_INTRV_DET.description
+  is 'Description';
+comment on column FDTT_ASS_ACT_INTRV_DET.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_ASS_ACT_INTRV_DET.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_ASS_ACT_INTRV_DET.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_ASS_ACT_INTRV_DET.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTAAINTRVD_INTRVD_FK_I on FDTT_ASS_ACT_INTRV_DET (NO_SEQ_INTRV_DETAIL);
+create index FDTT_ASSACTINTRV_DECOUPAGE_FK_I on FDTT_ASS_ACT_INTRV_DET (NO_SEQ_ACTIVITE_DECOUPAGE);
+alter table FDTT_ASS_ACT_INTRV_DET
+  add constraint FDTT_ASS_ACT_INTRV_DET_PK primary key (NO_SEQ_AACT_INTRV_DET);
+alter table FDTT_ASS_ACT_INTRV_DET
+  add constraint FDTT_ASS_ACT_INTRV_DET_UK unique (NO_SEQ_INTRV_DETAIL, NO_SEQ_ACTIVITE_DECOUPAGE);
+alter table FDTT_ASS_ACT_INTRV_DET
+  add constraint FDTAAINTRVD_INTRVD_FK foreign key (NO_SEQ_INTRV_DETAIL)
+  references FDTT_INTERVENTION_DETAIL (NO_SEQ_INTRV_DETAIL);
+alter table FDTT_ASS_ACT_INTRV_DET
+  add constraint FDTT_ASSACTINTRV_TRAV_FK foreign key (NO_SEQ_ACTIVITE_DECOUPAGE)
+  references FDTT_ACTIVITES (NO_SEQ_ACTIVITE);
+

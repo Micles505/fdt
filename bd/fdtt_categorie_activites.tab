@@ -1,0 +1,37 @@
+create table FDTT_CATEGORIE_ACTIVITES
+(
+  no_seq_categ_activ      NUMBER(10) not null,
+  code_categorie_activite VARCHAR2(8) not null,
+  description             VARCHAR2(100) not null,
+  co_type_categorie       VARCHAR2(10) not null,
+  co_user_cre_enreg       VARCHAR2(30) not null,
+  co_user_maj_enreg       VARCHAR2(30),
+  dh_cre_enreg            TIMESTAMP(6) not null,
+  dh_maj_enreg            TIMESTAMP(6)
+)
+;
+comment on column FDTT_CATEGORIE_ACTIVITES.no_seq_categ_activ
+  is 'No de séquence de l''évenement. Clé primaire.';
+comment on column FDTT_CATEGORIE_ACTIVITES.code_categorie_activite
+  is 'Code categorie activité 
+Ex: 
+ADM - Administration
+EXPL - Exploitation
+GCON - Gestion contruction
+GENRQ - Générique  *SAGIR
+GENRL - Général ';
+comment on column FDTT_CATEGORIE_ACTIVITES.description
+  is 'Description du code de la catégorie';
+comment on column FDTT_CATEGORIE_ACTIVITES.co_type_categorie
+  is 'Genre d''activité ';
+comment on column FDTT_CATEGORIE_ACTIVITES.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_CATEGORIE_ACTIVITES.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_CATEGORIE_ACTIVITES.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_CATEGORIE_ACTIVITES.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table FDTT_CATEGORIE_ACTIVITES
+  add constraint FDTT_CATEG_ACTIVITE_PK primary key (NO_SEQ_CATEG_ACTIV);
+

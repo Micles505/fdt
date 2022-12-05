@@ -1,0 +1,52 @@
+create table FDTT_SUIVI_FEUILLES_TEMPS
+(
+  no_seq_suivi_fdt         NUMBER(10) not null,
+  no_seq_fonct_intervenant NUMBER(10),
+  no_seq_feuil_temps       NUMBER(10) not null,
+  an_mois_fdt              VARCHAR2(6) not null,
+  co_typ_suivi_fdt         VARCHAR2(30) not null,
+  dh_suivi_fdt             DATE not null,
+  commentaire              VARCHAR2(400),
+  co_user_cre_enreg        VARCHAR2(30) not null,
+  co_user_maj_enreg        VARCHAR2(30),
+  dh_cre_enreg             TIMESTAMP(6) not null,
+  dh_maj_enreg             TIMESTAMP(6)
+)
+;
+comment on table FDTT_SUIVI_FEUILLES_TEMPS
+  is 'Suivi d''approbation et d''assiduité pour feuille de temps année/mois';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.no_seq_suivi_fdt
+  is 'No de séquence. Clé primaire.';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.no_seq_fonct_intervenant
+  is 'No séquence approbateur';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.no_seq_feuil_temps
+  is 'No séquence de la feuille de temps';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.an_mois_fdt
+  is 'Année / mois';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.co_typ_suivi_fdt
+  is 'Code type suivi - A_CORRIGER - VERI_RESP_ASSI - TRANS';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.dh_suivi_fdt
+  is 'Date et heure du suivi feuille de temps';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.commentaire
+  is 'Commentaire';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_SUIVI_FEUILLES_TEMPS.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTSFT_FONINT_FK_I on FDTT_SUIVI_FEUILLES_TEMPS (NO_SEQ_FONCT_INTERVENANT);
+create index FDTSFT_FTEMPS_FK_I on FDTT_SUIVI_FEUILLES_TEMPS (NO_SEQ_FEUIL_TEMPS);
+alter table FDTT_SUIVI_FEUILLES_TEMPS
+  add constraint FDTT_SUIVI_FEUILLE_TEMPS_PK primary key (NO_SEQ_SUIVI_FDT);
+alter table FDTT_SUIVI_FEUILLES_TEMPS
+  add constraint FDTT_SUIVI_FEUILLE_TEMPS_UK unique (NO_SEQ_FEUIL_TEMPS, NO_SEQ_FONCT_INTERVENANT, AN_MOIS_FDT, CO_TYP_SUIVI_FDT, DH_SUIVI_FDT);
+alter table FDTT_SUIVI_FEUILLES_TEMPS
+  add constraint FDTSFT_FDTFTP_FK foreign key (NO_SEQ_FEUIL_TEMPS)
+  references FDTT_FEUILLES_TEMPS (NO_SEQ_FEUIL_TEMPS);
+alter table FDTT_SUIVI_FEUILLES_TEMPS
+  add constraint FDTSFT_FONINT_FK foreign key (NO_SEQ_FONCT_INTERVENANT)
+  references FDTT_FONCT_INTERVENANTS (NO_SEQ_FONCT_INTRV);
+

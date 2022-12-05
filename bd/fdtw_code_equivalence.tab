@@ -1,0 +1,19 @@
+create table FDTW_CODE_EQUIVALENCE
+(
+  code_ressource_source  VARCHAR2(10),
+  no_seq_ressource_equiv NUMBER(10)
+)
+;
+comment on table FDTW_CODE_EQUIVALENCE
+  is 'Cette tabble est une table de travail pour redressir des codes sous la bonne information';
+comment on column FDTW_CODE_EQUIVALENCE.code_ressource_source
+  is 'Code source de la ressource à redressir ';
+comment on column FDTW_CODE_EQUIVALENCE.no_seq_ressource_equiv
+  is 'No. séquence de la ressource';
+create index FDTW_CODEEQUIV_FK_I on FDTW_CODE_EQUIVALENCE (NO_SEQ_RESSOURCE_EQUIV);
+alter table FDTW_CODE_EQUIVALENCE
+  add constraint FDTW_CODEEQUIV_UK unique (CODE_RESSOURCE_SOURCE, NO_SEQ_RESSOURCE_EQUIV);
+alter table FDTW_CODE_EQUIVALENCE
+  add constraint FDTW_CODEEQUIV_FK foreign key (NO_SEQ_RESSOURCE_EQUIV)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+

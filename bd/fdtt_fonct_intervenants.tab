@@ -1,0 +1,52 @@
+create table FDTT_FONCT_INTERVENANTS
+(
+  no_seq_fonct_intrv NUMBER(10) not null,
+  co_employe_shq     NUMBER(5) not null,
+  no_seq_groupe      NUMBER(8),
+  co_eta_fonction    VARCHAR2(30) not null,
+  co_typ_fonction    VARCHAR2(30) not null,
+  dt_debut_fonction  DATE not null,
+  dt_fin_fonction    DATE,
+  co_user_cre_enreg  VARCHAR2(30) not null,
+  co_user_maj_enreg  VARCHAR2(30),
+  dh_cre_enreg       TIMESTAMP(6) not null,
+  dh_maj_enreg       TIMESTAMP(6)
+)
+;
+comment on table FDTT_FONCT_INTERVENANTS
+  is 'Table d''approbateur et leur fonction';
+comment on column FDTT_FONCT_INTERVENANTS.no_seq_fonct_intrv
+  is 'No de séquence de de l''analyse de la demande. Clé primaire.';
+comment on column FDTT_FONCT_INTERVENANTS.co_employe_shq
+  is 'Code empoloyé SHQ';
+comment on column FDTT_FONCT_INTERVENANTS.no_seq_groupe
+  is 'No séquence du groupe';
+comment on column FDTT_FONCT_INTERVENANTS.co_eta_fonction
+  is 'Fonction de l''intervenant principal ou remplaçant';
+comment on column FDTT_FONCT_INTERVENANTS.co_typ_fonction
+  is 'Code type de la fonction : approbateur, valideur';
+comment on column FDTT_FONCT_INTERVENANTS.dt_debut_fonction
+  is 'Date début en fonction';
+comment on column FDTT_FONCT_INTERVENANTS.dt_fin_fonction
+  is 'Date fin en fonction';
+comment on column FDTT_FONCT_INTERVENANTS.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_FONCT_INTERVENANTS.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_FONCT_INTERVENANTS.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_FONCT_INTERVENANTS.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTFINTRV_BUSEMP_FK_I on FDTT_FONCT_INTERVENANTS (CO_EMPLOYE_SHQ);
+create index FDTFINTRV_GROUPE_FK_I on FDTT_FONCT_INTERVENANTS (NO_SEQ_GROUPE);
+alter table FDTT_FONCT_INTERVENANTS
+  add constraint FDTFONCT_INTRV_PK primary key (NO_SEQ_FONCT_INTRV);
+alter table FDTT_FONCT_INTERVENANTS
+  add constraint FDTT_FINTRV_INTRV_UK unique (CO_EMPLOYE_SHQ, NO_SEQ_GROUPE, DT_DEBUT_FONCTION);
+alter table FDTT_FONCT_INTERVENANTS
+  add constraint FDTFINTRV_BUSEMP_FK foreign key (CO_EMPLOYE_SHQ)
+  references BUS.BUST_EMPLOYE (CO_EMPLOYE_SHQ);
+alter table FDTT_FONCT_INTERVENANTS
+  add constraint FDTFINTRV_GROUPE_FK foreign key (NO_SEQ_GROUPE)
+  references FDTT_GROUPES (NO_SEQ_GROUPE);
+

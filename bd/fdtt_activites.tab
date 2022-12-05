@@ -1,0 +1,49 @@
+create table FDTT_ACTIVITES
+(
+  no_seq_activite    NUMBER(10) not null,
+  no_seq_categ_activ NUMBER(10) not null,
+  nom                VARCHAR2(135) not null,
+  acronyme           VARCHAR2(20) not null,
+  co_typ_activite    VARCHAR2(10) not null,
+  co_sta_activite    VARCHAR2(1) default on null 'A' not null,
+  commentaire        VARCHAR2(400),
+  note               VARCHAR2(500),
+  co_user_cre_enreg  VARCHAR2(30) not null,
+  co_user_maj_enreg  VARCHAR2(30),
+  dh_cre_enreg       TIMESTAMP(6) not null,
+  dh_maj_enreg       TIMESTAMP(6)
+)
+;
+comment on table FDTT_ACTIVITES
+  is 'Définition des activités FDT feuille de temps';
+comment on column FDTT_ACTIVITES.no_seq_activite
+  is 'No de séquence de l''évenement. Clé primaire.';
+comment on column FDTT_ACTIVITES.no_seq_categ_activ
+  is 'No séquence de la catégorie d''activité';
+comment on column FDTT_ACTIVITES.nom
+  is 'Description de l''activité';
+comment on column FDTT_ACTIVITES.acronyme
+  is 'Acronyme - Code SAGIR';
+comment on column FDTT_ACTIVITES.co_typ_activite
+  is 'Code type d''activité - ABS - RESV - PROJET';
+comment on column FDTT_ACTIVITES.co_sta_activite
+  is 'Code status activité Actif/Inactif';
+comment on column FDTT_ACTIVITES.commentaire
+  is 'Indicateur commentaire Oui/Non';
+comment on column FDTT_ACTIVITES.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_ACTIVITES.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistement';
+comment on column FDTT_ACTIVITES.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_ACTIVITES.dh_maj_enreg
+  is 'Date heure de modification de l''enregistrement.';
+create index FDTACT_CATEG_FK_I on FDTT_ACTIVITES (NO_SEQ_CATEG_ACTIV);
+alter table FDTT_ACTIVITES
+  add constraint FDTT_ACTIVITE_PK primary key (NO_SEQ_ACTIVITE);
+alter table FDTT_ACTIVITES
+  add constraint FDTT_ACTIVITES_UK unique (ACRONYME, CO_TYP_ACTIVITE);
+alter table FDTT_ACTIVITES
+  add constraint FDTACT_CATEG_FK foreign key (NO_SEQ_CATEG_ACTIV)
+  references FDTT_CATEGORIE_ACTIVITES (NO_SEQ_CATEG_ACTIV);
+

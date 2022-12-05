@@ -1,0 +1,37 @@
+create table FDTT_INTERVENTION
+(
+  no_seq_interv     NUMBER(10) not null,
+  no_seq_direction  NUMBER(10) not null,
+  nom_interv        VARCHAR2(50) not null,
+  co_sta_interv     VARCHAR2(10) default 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+;
+comment on table FDTT_INTERVENTION
+  is 'Définition des plans d''intervention';
+comment on column FDTT_INTERVENTION.no_seq_interv
+  is 'No de séquence de l''enregistrement. Clé primaire.';
+comment on column FDTT_INTERVENTION.no_seq_direction
+  is 'Appartient à la direction ';
+comment on column FDTT_INTERVENTION.nom_interv
+  is 'Description de l''activité';
+comment on column FDTT_INTERVENTION.co_sta_interv
+  is 'Status de l''activité Actif - Inactif';
+comment on column FDTT_INTERVENTION.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_INTERVENTION.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_INTERVENTION.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_INTERVENTION.dh_maj_enreg
+  is 'Date heure de modification de l''enregistrement.';
+create index FDTINTRV_DIREC_FK_I on FDTT_INTERVENTION (NO_SEQ_DIRECTION);
+alter table FDTT_INTERVENTION
+  add constraint FDTT_INTERVENTION_PK primary key (NO_SEQ_INTERV);
+alter table FDTT_INTERVENTION
+  add constraint FDTT_INTERVENTION_CK1
+  check (CO_STA_INTERV IN ('A','I'));
+

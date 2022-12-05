@@ -1,0 +1,48 @@
+create table FDTT_QUALIFICATION
+(
+  no_seq_qualification NUMBER(10) not null,
+  no_seq_direction     NUMBER(10) not null,
+  co_typ_qualification VARCHAR2(10) not null,
+  description          VARCHAR2(200) not null,
+  co_sta_qualification VARCHAR2(1) default on null 'A' not null,
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on table FDTT_QUALIFICATION
+  is 'Table des attributs des éléments de qualification. Qualifié/Non qualifié, De conitnuité/De gouvernance, De mission/De soutien, Infrastructure/Gouvernance';
+comment on column FDTT_QUALIFICATION.no_seq_qualification
+  is 'Numéro de séquence des qualification .C''''est numéro unique assigné à la création d''élément qualification des type d''interventions';
+comment on column FDTT_QUALIFICATION.no_seq_direction
+  is 'No de séquence de la direction.';
+comment on column FDTT_QUALIFICATION.co_typ_qualification
+  is 'Code de l''élément qualification - 
+Qualifié/Non qualifié
+De conitnuité/De gouvernance
+De mission/De soutien
+Infrastructure/Gouvernance
+';
+comment on column FDTT_QUALIFICATION.description
+  is 'Description';
+comment on column FDTT_QUALIFICATION.co_sta_qualification
+  is 'Staut de l''attribut d''élément qualificaiton Actif/Inactif';
+comment on column FDTT_QUALIFICATION.co_user_cre_enreg
+  is 'Code utilisateur de l''''usager qui a créé l''''enregistrement.';
+comment on column FDTT_QUALIFICATION.dh_cre_enreg
+  is 'Date heure création de l''''enregistrement.';
+comment on column FDTT_QUALIFICATION.dh_maj_enreg
+  is 'Date heure modification de l''''enregistrement.';
+create index FDTQUALF_DIREC_FK_I on FDTT_QUALIFICATION (NO_SEQ_DIRECTION);
+alter table FDTT_QUALIFICATION
+  add constraint FDTT_QUALIFICATION_PK primary key (NO_SEQ_QUALIFICATION);
+alter table FDTT_QUALIFICATION
+  add constraint FDTT_QUALIFICATION_UK unique (NO_SEQ_DIRECTION, CO_TYP_QUALIFICATION);
+alter table FDTT_QUALIFICATION
+  add constraint FDTQUALF_DIREC_FK foreign key (NO_SEQ_DIRECTION)
+  references FDTT_DIRECTION (NO_SEQ_DIRECTION);
+alter table FDTT_QUALIFICATION
+  add constraint FDTT_QUALIFICAITON_CK1
+  check ("CO_STA_QUALIFICATION"='A' OR "CO_STA_QUALIFICATION"='I');
+

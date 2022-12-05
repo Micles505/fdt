@@ -1,0 +1,65 @@
+create table FDTT_TEMPS_JOURS
+(
+  no_seq_temps_jour  NUMBER(10) not null,
+  no_seq_feuil_temps NUMBER(10) not null,
+  no_seq_activite    NUMBER(10),
+  an_mois_fdt        VARCHAR2(6) not null,
+  dt_temps_jour      DATE not null,
+  dh_debut_am_temps  DATE,
+  dh_fin_am_temps    DATE,
+  dh_debut_pm_temps  DATE,
+  dh_fin_pm_temps    DATE,
+  total_temps_min    NUMBER(4) not null,
+  total_temps_hrs    as ("TOTAL_TEMPS_MIN"/60),
+  remarque           VARCHAR2(400),
+  co_user_cre_enreg  VARCHAR2(30) not null,
+  co_user_maj_enreg  VARCHAR2(30),
+  dh_cre_enreg       TIMESTAMP(6) not null,
+  dh_maj_enreg       TIMESTAMP(6)
+)
+;
+comment on table FDTT_TEMPS_JOURS
+  is 'Table de la saisie temps par jour';
+comment on column FDTT_TEMPS_JOURS.no_seq_temps_jour
+  is 'No de séquence de de l''analyse de la demande. Clé primaire.';
+comment on column FDTT_TEMPS_JOURS.no_seq_feuil_temps
+  is 'No séquence feuille de temps';
+comment on column FDTT_TEMPS_JOURS.no_seq_activite
+  is 'No séquence activité';
+comment on column FDTT_TEMPS_JOURS.an_mois_fdt
+  is 'Période YYYYMM';
+comment on column FDTT_TEMPS_JOURS.dt_temps_jour
+  is 'Date du jour';
+comment on column FDTT_TEMPS_JOURS.dh_debut_am_temps
+  is 'Date heure début am';
+comment on column FDTT_TEMPS_JOURS.dh_fin_am_temps
+  is 'Date heure fin am';
+comment on column FDTT_TEMPS_JOURS.dh_debut_pm_temps
+  is 'Date heure début pm';
+comment on column FDTT_TEMPS_JOURS.dh_fin_pm_temps
+  is 'Date heure fin pm';
+comment on column FDTT_TEMPS_JOURS.total_temps_min
+  is 'Total temps /jour /min';
+comment on column FDTT_TEMPS_JOURS.total_temps_hrs
+  is 'Colonne virtuelle   Total_temps_min * 60';
+comment on column FDTT_TEMPS_JOURS.remarque
+  is 'Remarque';
+comment on column FDTT_TEMPS_JOURS.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_TEMPS_JOURS.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifé l''enregistrement.';
+comment on column FDTT_TEMPS_JOURS.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_TEMPS_JOURS.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTJOUR_ACTIV_FK_I on FDTT_TEMPS_JOURS (NO_SEQ_ACTIVITE);
+create index FDTJOUR_FEUT_FK_I on FDTT_TEMPS_JOURS (NO_SEQ_FEUIL_TEMPS);
+alter table FDTT_TEMPS_JOURS
+  add constraint FDTT_TEMPS_JOUR_PK primary key (NO_SEQ_TEMPS_JOUR);
+alter table FDTT_TEMPS_JOURS
+  add constraint FDTJOUR_ACT_FK foreign key (NO_SEQ_ACTIVITE)
+  references FDTT_ACTIVITES (NO_SEQ_ACTIVITE);
+alter table FDTT_TEMPS_JOURS
+  add constraint FDTJOUR_FEUT_FK foreign key (NO_SEQ_FEUIL_TEMPS)
+  references FDTT_FEUILLES_TEMPS (NO_SEQ_FEUIL_TEMPS);
+

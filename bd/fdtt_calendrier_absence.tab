@@ -1,0 +1,83 @@
+create table FDTT_CALENDRIER_ABSENCE
+(
+  no_seq_calnd_absence NUMBER(10) not null,
+  no_seq_ressource     NUMBER(10),
+  co_employe_shq       NUMBER(5),
+  co_typ_absence       VARCHAR2(30) not null,
+  indic_valider        VARCHAR2(1) default 'N',
+  indic_approuver      VARCHAR2(1) default 'N',
+  dt_debut             DATE not null,
+  dt_fin               DATE not null,
+  co_typ_ampm_debut    VARCHAR2(30) not null,
+  co_typ_ampm_fin      VARCHAR2(30) not null,
+  duree_jhm            VARCHAR2(20),
+  remarque             VARCHAR2(400),
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on table FDTT_CALENDRIER_ABSENCE
+  is 'Table de la saisie temps des absences pour la planificaiton EX: Vacances, maladies, sans solde ';
+comment on column FDTT_CALENDRIER_ABSENCE.no_seq_calnd_absence
+  is 'No de séquence du calendrier de planification. Clé primaire.';
+comment on column FDTT_CALENDRIER_ABSENCE.no_seq_ressource
+  is 'No de séquence de la ressource. ';
+comment on column FDTT_CALENDRIER_ABSENCE.co_employe_shq
+  is 'Code de l''employé SHQ';
+comment on column FDTT_CALENDRIER_ABSENCE.co_typ_absence
+  is 'Code type d''absence';
+comment on column FDTT_CALENDRIER_ABSENCE.indic_valider
+  is 'Indicateur absence à valider (O/N)';
+comment on column FDTT_CALENDRIER_ABSENCE.indic_approuver
+  is 'Indicateur absence approuver (O/N)';
+comment on column FDTT_CALENDRIER_ABSENCE.dt_debut
+  is 'Date - heure de début ';
+comment on column FDTT_CALENDRIER_ABSENCE.dt_fin
+  is 'Date - heure de fin';
+comment on column FDTT_CALENDRIER_ABSENCE.co_typ_ampm_debut
+  is 'Code type de la journée AM - PM';
+comment on column FDTT_CALENDRIER_ABSENCE.co_typ_ampm_fin
+  is 'Code type de la journée AM - PM - Fin';
+comment on column FDTT_CALENDRIER_ABSENCE.duree_jhm
+  is 'Total jour - heure - minutes .... ouvrable';
+comment on column FDTT_CALENDRIER_ABSENCE.remarque
+  is 'Remarque';
+comment on column FDTT_CALENDRIER_ABSENCE.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_CALENDRIER_ABSENCE.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifé l''enregistrement.';
+comment on column FDTT_CALENDRIER_ABSENCE.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_CALENDRIER_ABSENCE.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTCABS_BEMPL_FK_I on FDTT_CALENDRIER_ABSENCE (CO_EMPLOYE_SHQ);
+create index FDTCABS_RESSR_FK_I on FDTT_CALENDRIER_ABSENCE (NO_SEQ_RESSOURCE);
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTT_CALENDRIER_ABSENCE_PK primary key (NO_SEQ_CALND_ABSENCE);
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTT_CALENDRIER_PLANF_UK unique (NO_SEQ_RESSOURCE, DT_DEBUT, CO_TYP_AMPM_DEBUT, DT_FIN, CO_TYP_AMPM_FIN);
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCABS_BEMPL_FK foreign key (CO_EMPLOYE_SHQ)
+  references BUS.BUST_EMPLOYE (CO_EMPLOYE_SHQ);
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCABS_RESSR_FK foreign key (NO_SEQ_RESSOURCE)
+  references FDTT_RESSOURCE (NO_SEQ_RESSOURCE);
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCALND_ABS_CK1
+  check (INDIC_VALIDER IN ('O','N'));
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCALND_ABS_CK2
+  check (INDIC_APPROUVER IN ('O','N'));
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCALND_ABS_CK3
+  check (CO_TYP_AMPM_DEBUT IN ('AM','PM'));
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCALND_ABS_CK4
+  check ((CO_EMPLOYE_SHQ IS NULL AND NO_SEQ_RESSOURCE IS NOT NULL) OR
+         (CO_EMPLOYE_SHQ IS NOT NULL AND NO_SEQ_RESSOURCE IS NULL));
+alter table FDTT_CALENDRIER_ABSENCE
+  add constraint FDTCALND_ABS_CK5
+  check (CO_TYP_AMPM_FIN IN ('AM','PM'));
+

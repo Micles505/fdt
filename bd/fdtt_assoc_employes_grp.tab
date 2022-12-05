@@ -1,0 +1,44 @@
+create table FDTT_ASSOC_EMPLOYES_GRP
+(
+  no_seq_asso_empl_grp NUMBER(10) not null,
+  no_seq_groupe        NUMBER(8) not null,
+  co_employe_shq       NUMBER(5) not null,
+  dt_debut_association DATE not null,
+  dt_fin_association   DATE,
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+;
+comment on table FDTT_ASSOC_EMPLOYES_GRP
+  is 'Table d''association des approbateurs au groupe (famille)';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.no_seq_asso_empl_grp
+  is 'No de séquence de de l''analyse de la demande. Clé primaire.';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.no_seq_groupe
+  is 'No de séquence du groupe';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.co_employe_shq
+  is 'No code employé SHQ';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.dt_debut_association
+  is 'Date début ';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.dt_fin_association
+  is 'Date de fin';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column FDTT_ASSOC_EMPLOYES_GRP.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index FDTASSEMPGRP_BUSEMP_FK_I on FDTT_ASSOC_EMPLOYES_GRP (CO_EMPLOYE_SHQ);
+create index FDTASSEMPGRP_GRP_FK_I on FDTT_ASSOC_EMPLOYES_GRP (NO_SEQ_GROUPE);
+alter table FDTT_ASSOC_EMPLOYES_GRP
+  add constraint FDTASSEMPGRP_PK primary key (NO_SEQ_ASSO_EMPL_GRP);
+alter table FDTT_ASSOC_EMPLOYES_GRP
+  add constraint FDTASSEMPGRP_BUSEMP_FK foreign key (CO_EMPLOYE_SHQ)
+  references BUS.BUST_EMPLOYE (CO_EMPLOYE_SHQ);
+alter table FDTT_ASSOC_EMPLOYES_GRP
+  add constraint FDTASSEMPGRP_GRP_FK foreign key (NO_SEQ_GROUPE)
+  references FDTT_GROUPES (NO_SEQ_GROUPE);
+
