@@ -1,0 +1,29 @@
+create table UTL.UTLT_ICONE_APEX
+(
+  no_seq_icone_apex NUMBER(10) not null,
+  nom_icone_apex    VARCHAR2(200) not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_ICONE_APEX.no_seq_icone_apex
+  is 'No de séquence de l''enregistrement, clé primaire';
+comment on column UTL.UTLT_ICONE_APEX.nom_icone_apex
+  is 'Nom de l''icône APEX utilisée.';
+comment on column UTL.UTLT_ICONE_APEX.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_ICONE_APEX.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_ICONE_APEX.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_ICONE_APEX.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_ICONE_APEX
+  add constraint UTLICAPX_PK primary key (NO_SEQ_ICONE_APEX);
+alter index UTL.UTLICAPX_PK nologging;
+alter table UTL.UTLT_ICONE_APEX
+  add constraint UTLICAPX_UK unique (NOM_ICONE_APEX);
+alter index UTL.UTLICAPX_UK nologging;
+

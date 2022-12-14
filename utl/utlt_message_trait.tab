@@ -1,0 +1,67 @@
+create table UTL.UTLT_MESSAGE_TRAIT
+(
+  no_seq_mess_trait    NUMBER(10) not null,
+  co_systeme           VARCHAR2(6) not null,
+  co_message           VARCHAR2(6) not null,
+  typ_message          VARCHAR2(1) not null,
+  mode_affichage       VARCHAR2(1) not null,
+  description          VARCHAR2(130),
+  description_bouto_1  VARCHAR2(20),
+  description_bouto_2  VARCHAR2(20),
+  description_bouto_3  VARCHAR2(20),
+  description_long     VARCHAR2(400),
+  description_long_ang VARCHAR2(400),
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+nologging;
+comment on table UTL.UTLT_MESSAGE_TRAIT
+  is 'Il s''agit des messages de traitement qui peuvent survenir Ã  l''intÃ©rieur des systÃ¨mes.';
+comment on column UTL.UTLT_MESSAGE_TRAIT.no_seq_mess_trait
+  is 'Numéro de sÃ©quence du message traitement. Clé primaire.';
+comment on column UTL.UTLT_MESSAGE_TRAIT.co_systeme
+  is 'Code de système';
+comment on column UTL.UTLT_MESSAGE_TRAIT.co_message
+  is 'Code du message';
+comment on column UTL.UTLT_MESSAGE_TRAIT.typ_message
+  is 'Type de message';
+comment on column UTL.UTLT_MESSAGE_TRAIT.mode_affichage
+  is 'Mode d''affichage du message';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description
+  is 'Description du message';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description_bouto_1
+  is 'Description du bouton-1';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description_bouto_2
+  is 'Description du bouton-2';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description_bouto_3
+  is 'Description du bouton-3';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description_long
+  is 'Description longue du message';
+comment on column UTL.UTLT_MESSAGE_TRAIT.description_long_ang
+  is 'Description longue du message anglaise';
+comment on column UTL.UTLT_MESSAGE_TRAIT.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_MESSAGE_TRAIT.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_MESSAGE_TRAIT.dh_cre_enreg
+  is 'Date heure créaation de l''enregistrement.';
+comment on column UTL.UTLT_MESSAGE_TRAIT.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_MESSAGE_TRAIT
+  add constraint UTLMESAPX_PK primary key (NO_SEQ_MESS_TRAIT);
+alter index UTL.UTLMESAPX_PK nologging;
+alter table UTL.UTLT_MESSAGE_TRAIT
+  add constraint UTLMESAPX_UK unique (CO_SYSTEME, CO_MESSAGE);
+alter index UTL.UTLMESAPX_UK nologging;
+alter table UTL.UTLT_MESSAGE_TRAIT
+  add constraint AVCON_1168882624_MODE__000
+  check (MODE_AFFICHAGE IN ('B', 'L'));
+alter table UTL.UTLT_MESSAGE_TRAIT
+  add constraint AVCON_1168882624_TYP_M_000
+  check (TYP_MESSAGE IN ('A', 'E', 'I', 'Q'));
+alter table UTL.UTLT_MESSAGE_TRAIT
+  add constraint UTLMETR_01_CK
+  check ((DESCRIPTION IS NULL and DESCRIPTION_LONG IS NOT NULL) OR (DESCRIPTION IS NOT NULL and DESCRIPTION_LONG IS NULL));
+

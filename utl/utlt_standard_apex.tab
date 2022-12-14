@@ -1,0 +1,38 @@
+create table UTL.UTLT_STANDARD_APEX
+(
+  no_seq_std_apex      NUMBER(10) not null,
+  co_std_apex          VARCHAR2(30) not null,
+  description_std_apex VARCHAR2(500) not null,
+  valeur_std_apex      VARCHAR2(2000) not null,
+  valeur_std_ang_apex  VARCHAR2(2000),
+  co_user_cre_enreg    VARCHAR2(30) not null,
+  co_user_maj_enreg    VARCHAR2(30),
+  dh_cre_enreg         TIMESTAMP(6) not null,
+  dh_maj_enreg         TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_STANDARD_APEX.no_seq_std_apex
+  is 'No de séquence de l''enregistrement, clé primaire';
+comment on column UTL.UTLT_STANDARD_APEX.co_std_apex
+  is 'Code du standard APEX.';
+comment on column UTL.UTLT_STANDARD_APEX.description_std_apex
+  is 'Description du standard APEX.';
+comment on column UTL.UTLT_STANDARD_APEX.valeur_std_apex
+  is 'Valeur du standard APEX.';
+comment on column UTL.UTLT_STANDARD_APEX.valeur_std_ang_apex
+  is 'Valeur du standard APEX anglais.';
+comment on column UTL.UTLT_STANDARD_APEX.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_STANDARD_APEX.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_STANDARD_APEX.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_STANDARD_APEX.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_STANDARD_APEX
+  add constraint UTLSTAPX_PK primary key (NO_SEQ_STD_APEX);
+alter index UTL.UTLSTAPX_PK nologging;
+alter table UTL.UTLT_STANDARD_APEX
+  add constraint UTLSTAPX_UN unique (CO_STD_APEX);
+alter index UTL.UTLSTAPX_UN nologging;
+

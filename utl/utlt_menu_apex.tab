@@ -1,0 +1,40 @@
+create table UTL.UTLT_MENU_APEX
+(
+  no_seq_menu_apx   NUMBER(10) not null,
+  co_menu_apx       VARCHAR2(10) not null,
+  nom_menu_apx      VARCHAR2(100) not null,
+  desc_menu_apx     VARCHAR2(500),
+  co_sta_menu_apx   VARCHAR2(1) default 'A' not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_MENU_APEX.no_seq_menu_apx
+  is 'No de séquence de l''enregistrement, clé primaire';
+comment on column UTL.UTLT_MENU_APEX.co_menu_apx
+  is 'Code du menu.';
+comment on column UTL.UTLT_MENU_APEX.nom_menu_apx
+  is 'Nom du menu.';
+comment on column UTL.UTLT_MENU_APEX.desc_menu_apx
+  is 'Description du menu.';
+comment on column UTL.UTLT_MENU_APEX.co_sta_menu_apx
+  is 'Code Statut du menu   (A/I).';
+comment on column UTL.UTLT_MENU_APEX.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_MENU_APEX.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_MENU_APEX.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_MENU_APEX.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_MENU_APEX
+  add constraint UTLMEAPX_PK primary key (NO_SEQ_MENU_APX);
+alter index UTL.UTLMEAPX_PK nologging;
+alter table UTL.UTLT_MENU_APEX
+  add constraint UTLMEAPX_UN unique (CO_MENU_APX);
+alter index UTL.UTLMEAPX_UN nologging;
+alter table UTL.UTLT_MENU_APEX
+  add check (co_sta_menu_apx IN ('A','I'));
+

@@ -1,0 +1,35 @@
+create table UTL.UTLT_ERREUR_ORACLE
+(
+  no_seq_err_ora    NUMBER(10) not null,
+  no_err_ora        NUMBER(5) not null,
+  co_err_ora        VARCHAR2(10) not null,
+  message_err_ora   VARCHAR2(200) not null,
+  co_user_cre_enreg VARCHAR2(30) not null,
+  co_user_maj_enreg VARCHAR2(30),
+  dh_cre_enreg      TIMESTAMP(6) not null,
+  dh_maj_enreg      TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_ERREUR_ORACLE.no_seq_err_ora
+  is 'No de séquence de l''enregistrement, clé primaire';
+comment on column UTL.UTLT_ERREUR_ORACLE.no_err_ora
+  is 'Numéro de l''erreur Oracle.';
+comment on column UTL.UTLT_ERREUR_ORACLE.co_err_ora
+  is 'Code de l''erreur Oracle.';
+comment on column UTL.UTLT_ERREUR_ORACLE.message_err_ora
+  is 'Texte du message de l''erreur Oracle.';
+comment on column UTL.UTLT_ERREUR_ORACLE.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_ERREUR_ORACLE.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_ERREUR_ORACLE.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_ERREUR_ORACLE.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_ERREUR_ORACLE
+  add constraint UTLERORA_PK primary key (NO_SEQ_ERR_ORA);
+alter index UTL.UTLERORA_PK nologging;
+alter table UTL.UTLT_ERREUR_ORACLE
+  add constraint UTLERORA_UN unique (NO_ERR_ORA);
+alter index UTL.UTLERORA_UN nologging;
+

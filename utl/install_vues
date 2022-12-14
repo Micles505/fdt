@@ -1,0 +1,14 @@
+prompt PL/SQL Developer Export User Objects for user UTL@DEV01
+prompt Created by SHQIAR on 14 décembre 2022
+set define off
+spool install_vues.log
+
+prompt
+prompt Creating view UTLV_MENU_APEX
+prompt ============================
+prompt
+@@utlv_menu_apex.vw
+
+prompt Done
+spool off
+set define on

@@ -1,0 +1,126 @@
+create table UTL.UTLT_GRILLE_ACTION_ITEM
+(
+  no_seq_gril_act_item        NUMBER(10) not null,
+  no_seq_gril_action          NUMBER(10) not null,
+  no_seq_gril_act_item_parent NUMBER(10),
+  no_seq_icone_apex           NUMBER(10),
+  id_cle_affaire              VARCHAR2(75),
+  co_sta_act_item             VARCHAR2(1) not null,
+  co_typ_gril_act_item        VARCHAR2(50) not null,
+  co_act_jsc_grille           VARCHAR2(10),
+  libelle_gril_act_item       VARCHAR2(100) not null,
+  url_gril_act_item           VARCHAR2(2500),
+  cjs_gril_act_item           VARCHAR2(4000),
+  co_typ_menu_act_item        VARCHAR2(10) not null,
+  co_precis_gril_act_item     VARCHAR2(10),
+  co_typ_position             VARCHAR2(10) not null,
+  no_position_index           NUMBER(3),
+  no_ord_gril_act_item        NUMBER(3) not null,
+  nom_table_verif             VARCHAR2(500),
+  nom_colone_verif            VARCHAR2(500),
+  nom_item_page_recept_liste  VARCHAR2(500),
+  nom_table_liste             VARCHAR2(128),
+  nom_colonne_liste           VARCHAR2(500),
+  id_app_apex_liste           NUMBER(10),
+  id_page_apex_liste          NUMBER(10),
+  nom_item_page_recept_formu  VARCHAR2(500),
+  nom_table_formulaire        VARCHAR2(128),
+  nom_colonne_formulaire      VARCHAR2(500),
+  id_app_apex_formulaire      NUMBER(10),
+  id_page_apex_formulaire     NUMBER(10),
+  ind_affich_act_item         VARCHAR2(1) default 'N' not null,
+  nom_authorisat_schema       VARCHAR2(255),
+  nom_fonct_authorisat        VARCHAR2(2000),
+  co_user_cre_enreg           VARCHAR2(30) not null,
+  co_user_maj_enreg           VARCHAR2(30),
+  dh_cre_enreg                TIMESTAMP(6) not null,
+  dh_maj_enreg                TIMESTAMP(6)
+)
+;
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_seq_gril_act_item
+  is 'No de séquence. Clé primaire.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_seq_gril_action
+  is 'No de séquence de la grille.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_seq_gril_act_item_parent
+  is 'No de séquence de l''item parent.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_seq_icone_apex
+  is 'No de séquence de l''icône.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.id_cle_affaire
+  is 'Identifiant clé affaire (Key_business. Indexe unique';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_sta_act_item
+  is 'Code statut de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_typ_gril_act_item
+  is 'Co type de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_act_jsc_grille
+  is 'Code de la précision de l''action de la grillle item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.libelle_gril_act_item
+  is 'Libellé de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.url_gril_act_item
+  is 'URL de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.cjs_gril_act_item
+  is 'Code Java Script de l''item de la grille.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_typ_menu_act_item
+  is 'Code type menu de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_precis_gril_act_item
+  is 'Code précision l''item de la grille.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_typ_position
+  is 'Code type position.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_position_index
+  is 'No de position de l''index.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.no_ord_gril_act_item
+  is 'No d''ordre de l''item.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_table_verif
+  is 'Nom de la table vérifiée.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_colone_verif
+  is 'Nom de la colonne vérifiée.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_item_page_recept_liste
+  is 'Nom des items réceptionnés pour la liste.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_table_liste
+  is 'Nom de la table pour la récuperation des valeurs de colonne pour la liste.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_colonne_liste
+  is 'Nom des colonnes de la IG à passer en parametre à la liste. ( Le contenu des items de reception de la page liste.)';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.id_app_apex_liste
+  is 'Identifiant de l''application APEX.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.id_page_apex_liste
+  is 'Identifiant de la page APEX.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_item_page_recept_formu
+  is 'Nom des items réceptionnés pour le formulaire.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_table_formulaire
+  is 'Nom de la table pour la récuperation des valeurs de colonne pour le formulaire.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_colonne_formulaire
+  is 'Nom des colonnes de la IG à paser en paramètre au formulaire. ( Le contenu des items de reception de la page formulaire.)';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.id_app_apex_formulaire
+  is 'Identifiant du formulaire APEX.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.id_page_apex_formulaire
+  is 'Identifiant de la page du formulaire APEX.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.ind_affich_act_item
+  is 'Indicateur d''affichage de l''item (O/N).';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_authorisat_schema
+  is 'Nom de l''authorisation du schéma.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.nom_fonct_authorisat
+  is 'Nom de la fonction dl''authorisation.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION_ITEM.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create unique index UTL.UTLGRACIT_UK1 on UTL.UTLT_GRILLE_ACTION_ITEM (ID_CLE_AFFAIRE)
+  nologging;
+create index UTL.UTLGRACIT_UTLGRACIT_FK_I on UTL.UTLT_GRILLE_ACTION_ITEM (NO_SEQ_GRIL_ACT_ITEM_PARENT);
+create index UTL.UTLGRACIT_UTLICOAP_FK_I on UTL.UTLT_GRILLE_ACTION_ITEM (NO_SEQ_ICONE_APEX);
+create index UTL.UTLGRACIT_UTLTGRACT_FK_I on UTL.UTLT_GRILLE_ACTION_ITEM (NO_SEQ_GRIL_ACTION);
+alter table UTL.UTLT_GRILLE_ACTION_ITEM
+  add constraint UTLGRACIT_PK primary key (NO_SEQ_GRIL_ACT_ITEM);
+alter table UTL.UTLT_GRILLE_ACTION_ITEM
+  add constraint UTLGRACIT_UTLGRACIT_FK foreign key (NO_SEQ_GRIL_ACT_ITEM_PARENT)
+  references UTL.UTLT_GRILLE_ACTION_ITEM (NO_SEQ_GRIL_ACT_ITEM);
+alter table UTL.UTLT_GRILLE_ACTION_ITEM
+  add constraint UTLGRACIT_UTLICOAP_FK foreign key (NO_SEQ_ICONE_APEX)
+  references UTL.UTLT_ICONE_APEX (NO_SEQ_ICONE_APEX);
+alter table UTL.UTLT_GRILLE_ACTION_ITEM
+  add constraint UTLGRACIT_UTLTGRACT_FK foreign key (NO_SEQ_GRIL_ACTION)
+  references UTL.UTLT_GRILLE_ACTION (NO_SEQ_GRIL_ACTION);
+

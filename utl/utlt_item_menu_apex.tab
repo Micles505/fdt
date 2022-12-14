@@ -1,0 +1,115 @@
+create table UTL.UTLT_ITEM_MENU_APEX
+(
+  no_seq_item_apx             NUMBER(10) not null,
+  no_seq_menu_apx             NUMBER(10) not null,
+  no_seq_item_parent          NUMBER(10),
+  no_seq_application          NUMBER(10),
+  co_item_apx                 VARCHAR2(10) not null,
+  nom_item_apx                VARCHAR2(100) not null,
+  desc_item_apx               VARCHAR2(500),
+  co_typ_libel_item_apx       VARCHAR2(10) not null,
+  val_typ_item_apx            VARCHAR2(200) not null,
+  val_typ_item_ang_apx        VARCHAR2(200),
+  ord_pres_item_apx           NUMBER(5) not null,
+  co_sta_item_apx             VARCHAR2(1) default 'A' not null,
+  no_seq_icone_apx            NUMBER(10),
+  no_seq_portail_appli        NUMBER(10),
+  typ_application             VARCHAR2(10) not null,
+  no_page_apex                VARCHAR2(50),
+  url_applicat                VARCHAR2(2500),
+  ind_duplicat_session        VARCHAR2(1) default 'N' not null,
+  ind_reinit_page             VARCHAR2(1) default 'N' not null,
+  ind_net_rapp_interact       VARCHAR2(1) default 'N' not null,
+  ind_reinit_rap_interact     VARCHAR2(1) default 'N' not null,
+  ind_cond_affich             VARCHAR2(1) default 'N' not null,
+  nom_req_soum                VARCHAR2(50),
+  enonce_reinit_rap_interac   VARCHAR2(500),
+  nom_fonct_plsql_cond_affich VARCHAR2(1000),
+  nom_fonct_plsql_libel       VARCHAR2(1000),
+  co_typ_affich               VARCHAR2(5),
+  co_user_cre_enreg           VARCHAR2(30) not null,
+  co_user_maj_enreg           VARCHAR2(30),
+  dh_cre_enreg                TIMESTAMP(6) not null,
+  dh_maj_enreg                TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_item_apx
+  is 'No de séquence de l''enregistrement, clé primaire';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_menu_apx
+  is 'No de séquence du menu associé';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_item_parent
+  is 'No de séquence de l''item parent';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_application
+  is 'No de séquence de l''application table BUST_Application.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_item_apx
+  is 'Code de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.nom_item_apx
+  is 'Nom de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.desc_item_apx
+  is 'Description de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_typ_libel_item_apx
+  is 'Code type de libellé de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.val_typ_item_apx
+  is 'Valeur du type de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.val_typ_item_ang_apx
+  is 'Valeur du type de l''item du menu anglais APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ord_pres_item_apx
+  is 'Ordre de présentation de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_sta_item_apx
+  is 'Code statut de l''item du menu APEX.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_icone_apx
+  is 'No de séquence de l''icone associée';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_seq_portail_appli
+  is 'No séquence portail application.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.typ_application
+  is 'Typer de l''application liée à l''item du menu APEX. (APEX ou URL)';
+comment on column UTL.UTLT_ITEM_MENU_APEX.no_page_apex
+  is 'Numéro de la page APEX référée.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.url_applicat
+  is 'Adresse URL de l''application référée.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ind_duplicat_session
+  is 'Indicateur duplication de la session.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ind_reinit_page
+  is 'Indicateur de réinitialisation de la page APEXE';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ind_net_rapp_interact
+  is 'Indicateur de nettoyage du rapport interactif.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ind_reinit_rap_interact
+  is 'Indicateur de réinitialisation du rapport interactif.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.ind_cond_affich
+  is 'Indicateur de condition d''affichage.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.nom_req_soum
+  is 'Nom de la requette à soumettre.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.enonce_reinit_rap_interac
+  is 'Énoncé pour la réinitialisation du rapport interactif.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.nom_fonct_plsql_cond_affich
+  is 'Nom de la de la fonction PLSQL à appeler pour validerla condition d''affichage.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.nom_fonct_plsql_libel
+  is 'Nom de la de la fonction PLSQL à appeler pour valider le type d''affichage.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_typ_affich
+  is 'Code type d''affichage.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_ITEM_MENU_APEX.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+create index UTL.UTLITAPX_BUSAPPL_FK_I on UTL.UTLT_ITEM_MENU_APEX (NO_SEQ_APPLICATION);
+create index UTL.UTLITAPX_UTLICAPX_FK_I on UTL.UTLT_ITEM_MENU_APEX (NO_SEQ_ICONE_APX)
+  nologging;
+create index UTL.UTLITAPX_UTLITAPX_FK_I on UTL.UTLT_ITEM_MENU_APEX (NO_SEQ_ITEM_PARENT)
+  nologging;
+create index UTL.UTLITAPX_UTLMEAPX_FK_I on UTL.UTLT_ITEM_MENU_APEX (NO_SEQ_MENU_APX)
+  nologging;
+create index UTL.UTLITAPX_UTLPORA_FK_I on UTL.UTLT_ITEM_MENU_APEX (NO_SEQ_PORTAIL_APPLI)
+  nologging;
+alter table UTL.UTLT_ITEM_MENU_APEX
+  add constraint UTLITAPX_PK primary key (NO_SEQ_ITEM_APX);
+alter index UTL.UTLITAPX_PK nologging;
+alter table UTL.UTLT_ITEM_MENU_APEX
+  add constraint UTLITAPX_UN unique (CO_ITEM_APX);
+alter index UTL.UTLITAPX_UN nologging;
+alter table UTL.UTLT_ITEM_MENU_APEX
+  add check (co_sta_item_apx IN ('A','I'));
+

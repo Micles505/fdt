@@ -1,0 +1,32 @@
+create table UTL.UTLT_GRILLE_ACTION
+(
+  no_seq_gril_action NUMBER(10) not null,
+  co_gril_action     VARCHAR2(10) not null,
+  desc_gril_action   VARCHAR2(500) not null,
+  co_sta_gril_action VARCHAR2(1) default 'A' not null,
+  co_user_cre_enreg  VARCHAR2(30) not null,
+  co_user_maj_enreg  VARCHAR2(30),
+  dh_cre_enreg       TIMESTAMP(6) not null,
+  dh_maj_enreg       TIMESTAMP(6)
+)
+nologging;
+comment on column UTL.UTLT_GRILLE_ACTION.no_seq_gril_action
+  is 'No séquence de l''enregistrement. Clé primaire.';
+comment on column UTL.UTLT_GRILLE_ACTION.co_gril_action
+  is 'Code de la grille action.';
+comment on column UTL.UTLT_GRILLE_ACTION.desc_gril_action
+  is 'Description de la grille action';
+comment on column UTL.UTLT_GRILLE_ACTION.co_sta_gril_action
+  is 'Code statut de la grille action.';
+comment on column UTL.UTLT_GRILLE_ACTION.co_user_cre_enreg
+  is 'Code utilisateur de l''usager qui a créé l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION.co_user_maj_enreg
+  is 'Code utilisateur de l''usager qui a modifié l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION.dh_cre_enreg
+  is 'Date heure création de l''enregistrement.';
+comment on column UTL.UTLT_GRILLE_ACTION.dh_maj_enreg
+  is 'Date heure modification de l''enregistrement.';
+alter table UTL.UTLT_GRILLE_ACTION
+  add constraint UTLGRACT_PK primary key (NO_SEQ_GRIL_ACTION);
+alter index UTL.UTLGRACT_PK nologging;
+
